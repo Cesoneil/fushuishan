@@ -5,7 +5,6 @@ $valid_token = 'envl26tjbcnf234d3433m324m2234';
 //获取GitHub发送的内容
 $json = file_get_contents('php://input');
 $content = json_decode($json, true);
-print_r($content);exit;
 
 //github发送过来的签名
 $signature = $_SERVER['HTTP_X_HUB_SIGNATURE'];
@@ -17,9 +16,8 @@ $payloadHash = hash_hmac($algo, $json, $valid_token);
 
 // 判断签名是否匹配
 if ($hash === $payloadHash) {
-    $result = exec("cd /usr/develop/fushuishan/; git stash 2>&1; git pull origin master 2>&1",$output);
+    $result = exec("cd /usr/develop/fushuishan/; git stash; git pull origin master 2>&1",$output);
     echo '<pre>';
-    print_r($result);exit;
     var_dump($output); //这样可以用浏览器调试输出
 }else{
     $error  = 'Error: Token mismatch!'.PHP_EOL;
