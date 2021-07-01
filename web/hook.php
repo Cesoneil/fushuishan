@@ -1,6 +1,6 @@
 <?php
 
-$valid_token = 'testl26tjbcnf234d3433m324m2234';
+$valid_token = 'envl26tjbcnf234d3433m324m2234';
 $client_token = $_GET['token'];
 if ($client_token !== $valid_token) die('Token mismatch!');
 $result = exec("cd /usr/develop/SuperMiners/; git stash; git pull origin master 2>&1",$output);
