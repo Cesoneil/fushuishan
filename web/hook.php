@@ -1,5 +1,5 @@
 <?php
-$result = exec("cd /usr/develop/fushuishan/ & pwd & git pull origin master 2>&1",$output);
+$result = exec("cd /usr/develop/fushuishan & pwd & git pull origin master 2>&1",$output);
 echo '<pre>';
 var_dump($output); //这样可以用浏览器调试输出
 $valid_token = 'envl26tjbcnf234d3433m324m2234';
