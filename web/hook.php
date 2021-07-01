@@ -18,6 +18,7 @@ $payloadHash = hash_hmac($algo, $json, $valid_token);
 if ($hash === $payloadHash) {
     $result = exec("cd /usr/develop/fushuishan/; git stash 2>&1; git pull origin master 2>&1",$output);
     echo '<pre>';
+    print_r($result);exit;
     var_dump($output); //这样可以用浏览器调试输出
 }else{
     $error  = 'Error: Token mismatch!'.PHP_EOL;
