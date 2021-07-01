@@ -1,6 +1,6 @@
 <?php
 
-$result = exec("cd /usr/develop/fushuishan/; git stash; git pull origin master 2>&1",$output,$status);
+$result = exec("cd /usr/develop/fushuishan/&& sudo git stash && sudo git pull origin master 2>&1",$output,$status);
 echo '<pre>';
 echo $status;
 var_dump($output); //这样可以用浏览器调试输出
