@@ -16,7 +16,7 @@ $payloadHash = hash_hmac($algo, $json, $valid_token);
 
 // 判断签名是否匹配
 if ($hash === $payloadHash) {
-    $result = exec("cd /usr/develop/SuperMiners/; git stash 2>&1; git pull origin master 2>&1",$output);
+    $result = exec("cd /usr/develop/SuperMiners/; git stash; git pull origin master 2>&1",$output);
     echo '<pre>';
     var_dump($output); //这样可以用浏览器调试输出
 }else{
