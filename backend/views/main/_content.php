@@ -2,13 +2,13 @@
 use common\helpers\Url;
 
 //需要更改
-//if(!Yii::$app->services->auth->isAdmin()) {  //超级管理员
-//    $role = 'homepage';
-//}else if(Yii::$app->services->auth->isCaptain()){   //组长坐席
-//    $role = 'captain';
-//} else {        //普通坐席
-//    $role = 'main';
-//}
+if(!Yii::$app->services->auth->isAdmin()) {  //超级管理员
+    $role = 'homepage';
+}else if(Yii::$app->services->auth->isCaptain()){   //组长坐席
+    $role = 'captain';
+} else {        //普通坐席
+    $role = 'main';
+}
 $role = 'homepage';
 $homepage = Url::to(Yii::$app->params['adminDefaultHomePage'][$role]);
 ?>
