@@ -5,6 +5,7 @@ $valid_token = 'envl26tjbcnf234d3433m324m2234';
 //获取GitHub发送的内容
 $json = file_get_contents('php://input');
 $content = json_decode($json, true);
+print_r($content);exit;
 
 //github发送过来的签名
 $signature = $_SERVER['HTTP_X_HUB_SIGNATURE'];
