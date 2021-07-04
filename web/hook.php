@@ -4,6 +4,8 @@ echo '<pre>';
 var_dump($output); //这样可以用浏览器调试输出
 $valid_token = 'envl26tjbcnf234d3433m324m2234';
 
+exit;
+
 //获取GitHub发送的内容
 $json = file_get_contents('php://input');
 $content = json_decode($json, true);
