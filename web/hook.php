@@ -1,10 +1,5 @@
 <?php
-$result = exec("cd /usr/develop/fushuishan & pwd & git pull origin master 2>&1",$output);
-echo '<pre>';
-var_dump($output); //这样可以用浏览器调试输出
 $valid_token = 'envl26tjbcnf234d3433m324m2234';
-
-exit;
 
 //获取GitHub发送的内容
 $json = file_get_contents('php://input');
@@ -20,9 +15,10 @@ $payloadHash = hash_hmac($algo, $json, $valid_token);
 
 // 判断签名是否匹配
 if ($hash === $payloadHash) {
-    $result = exec("cd /usr/develop/fushuishan/ && sudo git stash && sudo git pull origin master 2>&1",$output);
-    echo '<pre>';
-    var_dump($output); //这样可以用浏览器调试输出
+//    $result = exec("cd /usr/develop/fushuishan/ &&  git stash &&  git pull origin master 2>&1",$output);
+//    echo '<pre>';
+//    var_dump($output); //这样可以用浏览器调试输出
+    echo 111;exit;
 }else{
     $error  = 'Error: Token mismatch!'.PHP_EOL;
     $error .= $content['head_commit']['author']['name'] . ' 在' . date('Y-m-d H:i:s') . '向' . $content['repository']['name'] . '项目的' . $content['ref'] . '分支push了' . count($content['commits']) . '>个commit：' . PHP_EOL;
