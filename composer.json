@@ -38,7 +38,6 @@
         "overtrue/flysystem-qiniu": "^1.0",
         "xj/yii2-oauth": "~2.0.0",
         "ramsey/uuid": "^3.7",
-        "moontoast/math": "^1.1",
         "jianyan74/yii2-easy-wechat": "^1.0",
         "jianyan74/yii2-treegrid": "^1.0",
         "jianyan74/yii2-console-migration": "^1.0",

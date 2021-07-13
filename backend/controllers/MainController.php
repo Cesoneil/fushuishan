@@ -34,7 +34,7 @@ class MainController extends BaseController
     public function actionSystem()
     {
         $merchant_id = Yii::$app->services->merchant->getId();
-        //print_r($this->action->id);exit;
+
         return $this->render($this->action->id, [
             'memberCount' => Yii::$app->services->member->getCount($merchant_id),
             'memberAccount' => Yii::$app->services->memberAccount->getSum($merchant_id),
