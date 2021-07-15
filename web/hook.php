@@ -27,5 +27,3 @@ if ($hash === $payloadHash) {
     die($error);
 }
 
-echo 111;
-
