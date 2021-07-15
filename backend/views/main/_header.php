@@ -11,7 +11,7 @@ use backend\widgets\notify\Notify;
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><?= Yii::$app->params['adminAcronym']; ?></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><?= Yii::$app->params['adminName']; ?></span>
+        <span class="logo-lg"><?= Yii::$app->params['adminTitle']; ?></span>
     </a>
     <nav class="navbar navbar-static-top">
         <!-- Sidebar toggle button-->
@@ -55,14 +55,14 @@ use backend\widgets\notify\Notify;
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img class="user-image head_portrait" src="<?= ImageHelper::defaultHeaderPortrait($manager->head_portrait); ?>"/>
-                        <span class="hidden-xs"><?= $manager->username; ?></span>
+                        <span class="hidden-xs"><?= $manager->realname; ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
                             <img class="img-circle head_portrait" src="<?= ImageHelper::defaultHeaderPortrait($manager->head_portrait); ?>"/>
                             <p>
-                                <?= $manager->username; ?>
+                                <?= $manager->realname; ?>
                                 <small><?= Yii::$app->request->userIP; ?></small>
                             </p>
                         </li>
@@ -87,7 +87,7 @@ use backend\widgets\notify\Notify;
 <!--                <li>-->
 <!--                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>-->
 <!--                </li>-->
-                <li> <!-- id="logout" class="hide"-->
+                <li >
                     <a href="<?= Url::to(['site/logout']); ?>" data-method="post"><i class="fa fa fa-sign-out"></i>退出</a>
                 </li>
             </ul>

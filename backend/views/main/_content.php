@@ -1,5 +1,16 @@
 <?php
 use common\helpers\Url;
+
+//需要更改
+//if(!Yii::$app->services->auth->isAdmin()) {  //超级管理员
+//    $role = 'homepage';
+//}else if(Yii::$app->services->auth->isCaptain()){   //组长坐席
+//    $role = 'captain';
+//} else {        //普通坐席
+//    $role = 'main';
+//}
+$role = 'homepage';
+$homepage = Url::to(Yii::$app->params['adminDefaultHomePage'][$role]);
 ?>
 
 <div class="content-wrapper">
@@ -7,7 +18,7 @@ use common\helpers\Url;
         <button class="roll-nav roll-left J_tabLeft"><i class="fa fa-angle-double-left"></i></button>
         <nav class="page-tabs J_menuTabs" id="rftags">
             <div class="page-tabs-content">
-                <a href="javascript:void (0);" class="active J_menuTab" data-id="<?= Url::to(['/main/system']); ?>" id="rftagsIndexLink">首页</a>
+                <a href="javascript:void (0);" class="active J_menuTab" data-id="<?= $homepage ?>" id="rftagsIndexLink">首页</a>
                 <!--默认主页需在对应的选项卡a元素上添加data-id="默认主页的url"-->
             </div>
         </nav>
@@ -25,6 +36,6 @@ use common\helpers\Url;
     </div>
     <div class="J_mainContent" id="content-main">
         <!--默认主页需在对应的页面显示iframe元素上添加name="iframe0"和data-id="默认主页的url"-->
-        <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="<?= Url::to(Yii::$app->params['adminDefaultHomePage']); ?>" frameborder="0" data-id="<?= Url::to(Yii::$app->params['adminDefaultHomePage']); ?>" seamless></iframe>
+        <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="<?= $homepage ?>" frameborder="0" data-id="<?= $homepage ?>" seamless></iframe>
     </div>
 </div>
