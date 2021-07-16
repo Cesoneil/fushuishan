@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'adminEmail' => 'admin@example.com',
+    'adminEmail' => 'cxad1345@163.com',
     'adminAcronym' => '震豹',
-    'adminName' => '欢迎访问富水山OA-DATA管理系统',
-    'adminTitle' => '富水山电子商务',
+    'adminName' => '欢迎访问OA-DATA管理系统',
+    'adminTitle' => '优瑞电子商务',
     //system为系统默认主页  homepage为普通客服主页  main为超级管理员、总经理主页  组长主页captain
     'adminDefaultHomePage' => ['system'=>'main/system','homepage'=>'main/homepage','main'=>'main/main','captain'=> 'main/captain'], // 系统默认主页
     /** ------ 总管理员配置 ------ **/
