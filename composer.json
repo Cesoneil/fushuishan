@@ -1,8 +1,8 @@
 {
-    "name": "jianyan74/rageframe2",
-    "description": "一个基于Yii2高级框架的快速开发应用引擎",
-    "keywords": ["yii2", "framework", "advanced", "project template", "rageframe", "rageframe2"],
-    "homepage": "http://www.rageframe.com/",
+    "name": "ffs/fss_data_manager",
+    "description": "Data Manager System",
+    "keywords": ["yii2", "data", "data manager", "manager system", "data system", "rageframe2"],
+    "homepage": "http://40675xg972.wicp.vip/",
     "type": "project",
     "license": "Apache-2.0",
     "support": {
