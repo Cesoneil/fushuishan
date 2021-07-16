@@ -1,4 +1,5 @@
 <?php
+#测试；
 $valid_token = 'envl26tjbcnf234d3433m324m2234';
 
 //获取GitHub发送的内容
