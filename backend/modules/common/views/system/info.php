@@ -66,7 +66,7 @@ $prefix = !RegularHelper::verify('url', Yii::getAlias('@attachurl')) ? Yii::$app
                     </tr>
                     <tr>
                         <td></td>
-                        <td>重量级全栖框架，为二次开发而生。</td>
+                        <td>优瑞数据支撑中心，为企业运营而生。</td>
                     </tr>
                     <tr>
                         <td>系统版本</td>
@@ -80,10 +80,10 @@ $prefix = !RegularHelper::verify('url', Yii::getAlias('@attachurl')) ? Yii::$app
                         <td>官网</td>
                         <td><?= Yii::$app->params['exploitOfficialWebsite']?></td>
                     </tr>
-                    <tr>
-                        <td>官方QQ群</td>
-                        <td><a href="https://jq.qq.com/?_wv=1027&amp;k=4BeVA2r" target="_blank">655084090</a></td>
-                    </tr>
+<!--                    <tr>-->
+<!--                        <td>官方QQ群</td>-->
+<!--                        <td><a href="https://jq.qq.com/?_wv=1027&amp;k=4BeVA2r" target="_blank">655084090</a></td>-->
+<!--                    </tr>-->
                     <tr>
                         <td>GitHub</td>
                         <td><?= Yii::$app->params['exploitGitHub']?></td>
