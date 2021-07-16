@@ -24,5 +24,4 @@ class Module extends \yii\base\Module
         // Yii::$app->services->merchant->addId(0);
         // custom initialization code goes here
     }
-    #test
 }
