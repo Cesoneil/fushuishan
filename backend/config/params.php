@@ -21,8 +21,8 @@ return [
     /** ------ 开发者信息 ------ **/
     'exploitDeveloper' => 'Cesoneil',
     'exploitFullName' => 'YouR应用基于RageFrame开发引擎',
-    'exploitOfficialWebsite' => '<a href="http://www.fss.com" target="_blank">http://40675xg972.wicp.vip/</a>',
-    'exploitGitHub' => '<a href="https://github.com/Cesoneil/fushuishan" target="_blank">https://github.com/jianyan74/rageframe2</a>',
+    'exploitOfficialWebsite' => '<a href="http://40675xg972.wicp.vip/" target="_blank">http://40675xg972.wicp.vip/</a>',
+    'exploitGitHub' => '<a href="https://github.com/Cesoneil/fushuishan" target="_blank">https://github.com/Cesoneil/fushuishan</a>',
 
     /**
      * 不需要验证的路由全称
