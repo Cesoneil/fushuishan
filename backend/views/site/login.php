@@ -1,5 +1,5 @@
 <?php
-$this->title = Yii::$app->params['adminTitle'];
+$this->title = Yii::$app->params['adminName'];
 
 use common\helpers\Html;
 use yii\bootstrap\ActiveForm;
@@ -13,7 +13,7 @@ use yii\captcha\Captcha;
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">欢迎登录</p>
+        <p class="login-box-msg">欢迎访问OA-DATA管理系统</p>
         <?php $form = ActiveForm::begin([
                 'id' => 'login-form'
         ]); ?>
