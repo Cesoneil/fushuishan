@@ -2,7 +2,7 @@
 
 namespace addons\Customer;
 
-use Yii;
+
 use yii\db\Migration;
 use common\interfaces\AddonWidget;
 
