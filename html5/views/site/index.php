@@ -7,13 +7,13 @@ $this->title = '【限时免费体验】解决男性阳痿、早泄、勃起无�
 
 </style>
 
-<div class="flex-center position-ref full-height">
+<div class="position-ref full-height">
     <div class="content">
 <!--        <div class="title m-b-md">-->
 <!--            html5-->
 <!--        </div>-->
         <a href="#2">
-            <img  src="<?php echo \yii\helpers\Url::to('@web/resources/img/zhucedan_bg.jpg');?>"/>
+            <img width="100%" class="user-image head_portrait" src="<?php echo \yii\helpers\Url::to('@web/resources/img/zhucedan_bg.jpg');?>"/>
         </a>
 
         <div class="links">
