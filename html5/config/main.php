@@ -11,7 +11,11 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'html5\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+        'activity' => [
+            'class' => 'html5\modules\activity\Module',
+        ]
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-html5',
