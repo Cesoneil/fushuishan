@@ -15,7 +15,10 @@ class RegisterFormController extends BaseController {
         // 个人信息
         // p(Yii::$app->wechat->user);
         // p(Yii::$app->params['wechatMember']);
+        $model= \common\models\backend\Member::findOne(['id'=>1]) ;
+
         return $this->render($this->action->id, [
+            'model' => $model,
         ]);
     }
 }

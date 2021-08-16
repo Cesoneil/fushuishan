@@ -1,6 +1,6 @@
 <?php
 
-$this->title = '';
+$this->title = 'Rageframe';
 ?>
 
 <style>
@@ -15,8 +15,7 @@ $this->title = '';
 
 
         <div class="links">
-<!--            <a href="#">欢迎进入手机应用</a>-->
-
+            <a href="#">欢迎进入手机应用</a>
         </div>
     </div>
 </div>
