@@ -21,19 +21,15 @@ use yii\bootstrap\ActiveForm;
             <div class="box-body">
                 <?= $form->field($model, 'realname')->textInput() ?>
                 <?= $form->field($model, 'mobile')->textInput() ?>
-                <?= $form->field($model, 'birthday')->widget('kartik\date\DatePicker', [
-                    'language' => 'zh-CN',
-                    'layout' => '{picker}{input}',
-                    'pluginOptions' => [
-                        'format' => 'yyyy-mm-dd',
-                        'todayHighlight' => true,// 今日高亮
-                        'autoclose' => true,// 选择后自动关闭
-                        'todayBtn' => true,// 今日按钮显示
-                    ],
-                    'options' => [
-                        'class' => 'form-control no_bor',
-                    ]
+                <?= \common\widgets\provinces\Provinces::widget([
+                    'form' => $form,
+                    'model' => $model,
+                    'template' => 'short',
+                    'provincesName' => 'province_id',// 省字段名
+                    'cityName' => 'city_id',// 市字段名
+                    'areaName' => 'area_id',// 区字段名
                 ]); ?>
+                <?= $form->field($model, 'address')->textarea() ?>
             </div>
             <div class="box-footer text-center">
                 <button class="btn btn-primary" type="submit">立即提交</button>
