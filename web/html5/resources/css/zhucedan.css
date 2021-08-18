@@ -12,9 +12,9 @@ html, body {
 }
 
 .flex-center {
-    /*align-items: center;*/
-    /*display: flex;*/
-    /*justify-content: center;*/
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .position-ref {
@@ -47,7 +47,4 @@ html, body {
 
 .m-b-md {
     margin-bottom: 30px;
-}
-.user-image{
-    width: 100%;
 }
