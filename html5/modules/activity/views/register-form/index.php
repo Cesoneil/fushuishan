@@ -71,11 +71,11 @@ AppAsset::register($this);
         <div class="box-header" style="  background-color: #f1f1f1;height: 30px;line-height: 30px">
             <div class="header-left" style="float: left; width: 60%;">
                 <i class="fa fa-circle text-success">🎺</i>
-                <span> <span style="color: red;font-size: 14px">北京 陈* 178 **** 8032</span> 已领取</span>
+                <span> <span style="color: red;">北京 陈* 178 **** 8032</span>已领取</span>
             </div>
             <div class="header-right" style="float: right;width: 40%;font-size: 12px;border-left: solid #fff;">
                 <i class="fa fa-circle text-success">🚩</i>
-                <span>目前已有<span class="total-human" style="font-size: 14px;color: red;">532</span>人成功领取</span>
+                <span>目前<span class="total-human" style="font-size: 14px;color: red;">532</span>人已成功领取</span>
             </div>
         </div>
         <div id="form" class="box">
@@ -84,9 +84,11 @@ AppAsset::register($this);
             ]); ?>
             <div class="box-body">
                 <?= $form->field($model, 'realname')->textInput() ?>
-                <?= $form->field($model, 'mobile')->textInput() ?>
-                <div class="self-mobile"><span><i>o</i><span class="info-state">使用本机号码</s></span></div>
-                <div style="padding:2px; text-align: left;">
+                <div>
+                    <?= $form->field($model, 'mobile')->textInput() ?>
+                    <div class="self-mobile"><span><i>o</i><span class="info-state">使用本机号码</s></span></div>
+                </div>
+                <div style="padding:2px; text-align: left; width: 100%">
                     <span class="agree">
                         使用本机号码即为同意
                         <span class="info-state">
@@ -104,10 +106,13 @@ AppAsset::register($this);
                     'areaName' => 'area_id',// 区字段名
                 ]); ?>
                 <?= $form->field($model, 'address')->textarea() ?>
-                <?= $form->field($model, 'gender')->checkbox() ?>
-                <div style="line-height: 40px; text-align: right;width: 85%">
-                    <span class="agree">自动输入历史手机号 <span class="info-state">《个人信息授权与保护声明》</span></span>
+                <div style="width: 100%">
+                    <?= $form->field($model, 'gender')->checkbox() ?>
+                    <div style="line-height: 38px; text-align: left;">
+                        <span class="agree">自动输入历史手机号 <span class="info-state">《个人信息授权与保护声明》</span></span>
+                    </div>
                 </div>
+
             </div>
             <div class="box-footer text-center">
                 <button style="background-color:#4e9fe4;width: 80%;padding: 40px auto;letter-spacing:5px;font-size: 20px;font-weight: 400" class="btn btn-primary" type="submit">立即提交</button>
