@@ -16,17 +16,17 @@ AppAsset::register($this);
     }
     .form-group {
         text-align: left;
-        margin: 0px auto;
+        margin: -2px auto;
     }
     .row > .col-lg-4 {
-        width: 33.33333%;
+        width: 33.333%;
         float: left;
     }
     .user-image{
         width: 100%;
     }
     .box{
-        margin: 15px;
+        margin: 10px 15px;
     }
     .info-state{
         color: blue;
@@ -86,7 +86,7 @@ AppAsset::register($this);
                 <?= $form->field($model, 'realname')->textInput() ?>
                 <?= $form->field($model, 'mobile')->textInput() ?>
                 <div class="self-mobile"><span><i>o</i><span class="info-state">使用本机号码</s></span></div>
-                <div style="padding-bottom: 5px; text-align: left;">
+                <div style="padding:2px; text-align: left;">
                     <span class="agree">
                         使用本机号码即为同意
                         <span class="info-state">
@@ -120,7 +120,7 @@ AppAsset::register($this);
         <div class="support">优瑞建站仅向商家提供技术支持</div>
     </div>
     <div class="agreement agree">提交即视为您已阅读并同意<span class="info-state"><<个人信息保护声明>></span></div>
-    <div style="display: none">
+    <div hidden>
         成功弹窗，并且产生邀请码。深度挖掘
     </div>
 </div>
