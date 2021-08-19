@@ -22,7 +22,7 @@ AppAsset::register($this);
      }
     .content{
         z-index: 1;
-        padding-bottom: 50px;
+        padding-bottom: 0px;
     }
     .form-group {
         /*text-align: left;*/
