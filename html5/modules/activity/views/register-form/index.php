@@ -9,7 +9,7 @@ AppAsset::register($this);
 ?>
 <style>
     ..has-success .form-control{
-        border-color: blue !important;
+        border-color: #4e9fe4 !important;
     }
     .content{
         z-index: 1;
