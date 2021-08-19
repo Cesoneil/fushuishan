@@ -74,6 +74,9 @@ AppAsset::register($this);
     .auto-mobile{
         line-height: 36px;
     }
+    .operator .auto-mobile{
+        text-align: left;
+    }
 </style>
 <div class="position-ref full-height">
     <div class="content">
