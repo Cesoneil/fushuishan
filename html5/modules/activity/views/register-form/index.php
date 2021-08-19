@@ -61,7 +61,7 @@ AppAsset::register($this);
     }
 
     .box-header{
-        background-color: #f1f1f1;height: 30px;line-height: 30px;padding-left: 15px;
+        background-color: #f1f1f1;height: 30px;line-height: 30px;padding-left: 10px;
     }
     .focus-info {
         color: red;
