@@ -28,6 +28,7 @@ AppAsset::register($this);
     }
     .box{
         margin: 10px 15px;
+        text-align: left;
     }
     .info-state{
         color: blue;
@@ -74,9 +75,7 @@ AppAsset::register($this);
     .auto-mobile{
         line-height: 36px;
     }
-    .operator .auto-mobile{
-        text-align: left;
-    }
+
 </style>
 <div class="position-ref full-height">
     <div class="content">
