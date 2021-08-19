@@ -99,7 +99,7 @@ AppAsset::register($this);
                 <i class="fa fa-xxx">🔉</i>
                 <span><span class="focus-info">北京 陈** 178****8032</span> 已领取</span>
             </span>
-            <span class="header-right" hidden> |
+            <span class="header-right"> |
                 <i class="fa fa-xxx">🚩</i>
                 <span>已有<span class="total-human focus-info">8532</span>人领取</span>
             </span>
