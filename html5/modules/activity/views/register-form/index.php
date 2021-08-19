@@ -27,6 +27,7 @@ AppAsset::register($this);
     .box{
         margin: 10px 15px;
         text-align: left;
+        color:#000000 ;
     }
     .info-state{
         color: blue;
