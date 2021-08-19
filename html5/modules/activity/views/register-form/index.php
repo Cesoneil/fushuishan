@@ -72,10 +72,10 @@ AppAsset::register($this);
         width: 15%;  float: left;
     }
     .field-member-mobile{
-        width: 68%;  float: left;
+        width: 69%;  float: left;
     }
     .self-mobile {
-        width: 32%;  float: right;  line-height: 49px;
+        width: 31%;  float: right;  line-height: 49px;
         padding-top: 20px;
     }
 
