@@ -75,7 +75,7 @@ AppAsset::register($this);
         width: 68%;  float: left;
     }
     .self-mobile {
-        width: 32%;  float: right;  line-height: 45px;
+        width: 32%;  float: right;  line-height: 44px;
         padding-top: 20px;
     }
 
