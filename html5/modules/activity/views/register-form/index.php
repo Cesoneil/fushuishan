@@ -8,6 +8,9 @@ use html5\assets\AppAsset;
 AppAsset::register($this);
 ?>
 <style>
+    .btn-success{
+        border-color: blue !important;
+    }
     .content{
         z-index: 1;
         padding-bottom: 50px;
