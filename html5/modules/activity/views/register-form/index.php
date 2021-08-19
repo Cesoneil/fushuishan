@@ -174,7 +174,7 @@ AppAsset::register($this);
         <div class="support">优瑞建站提供技术支持</div>
     </div>
 <!--    这里提供是否可以展示或者不展示处理 ,如果不展示需要把.content对底部的padding的50像素取消-->
-    <div class="agreement agree">提交即视为您已阅读并同意<span class="info-state"><<个人信息保护声明>></span></div>
+    <div class="agreement agree" hidden>提交即视为您已阅读并同意<span class="info-state">《个人信息保护声明》</span></div>
     <div hidden>
          成功弹窗，并且产生邀请码。深度挖掘  这是发送验证码的页面
     </div>
