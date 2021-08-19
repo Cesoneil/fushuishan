@@ -87,7 +87,7 @@ AppAsset::register($this);
         background-color:#4e9fe4;width: 80%;padding: 40px auto;letter-spacing:5px;font-size: 20px;font-weight: 400;
     }
 </style>
-<div class="position-ref full-height">
+<div class="">
     <div class="content">
         <a href="#form">
 <!--            这里可以是多长图片或者单张图片，选择轮播 2 或者纵向排列 1-->
