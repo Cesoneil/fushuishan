@@ -8,7 +8,7 @@ use html5\assets\AppAsset;
 AppAsset::register($this);
 ?>
 <style>
-    .btn-success{
+    ..has-success .form-control{
         border-color: blue !important;
     }
     .content{
