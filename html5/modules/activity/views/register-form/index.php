@@ -9,13 +9,16 @@ AppAsset::register($this);
 ?>
 <style>
     .has-success .form-control {
-        border-color: #ccc !important;
+        border-color: #ccc;
     }
      .has-success .control-label {
-        color: #76838f !important;
+        color: #76838f;
      }
-     .label{
-         font-weight:100 !important;
+     label{
+         font-weight:300;
+     }
+     .form-control{
+        color: #000000;
      }
     .content{
         z-index: 1;
@@ -30,6 +33,15 @@ AppAsset::register($this);
         width: 33.33%;
         float: left;
     }
+    /*.row > .col-lg-4 label {*/
+
+        /*width:15%;*/
+        /*float: left;*/
+    /*}*/
+    /*.row > .col-lg-4 .form-control{*/
+        /*width:85%;*/
+        /*float: right;*/
+    /*}*/
     .user-image{
         width: 100%;
     }
