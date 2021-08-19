@@ -25,8 +25,8 @@ AppAsset::register($this);
         padding-bottom: 50px;
     }
     .form-group {
-        text-align: left;
-        margin: -2px auto;
+        /*text-align: left;*/
+        margin: -3px auto;
     }
     .row > .col-lg-4 {
         display: block;
@@ -75,7 +75,7 @@ AppAsset::register($this);
         width: 69%;  float: left;
     }
     .self-mobile {
-        width: 31%;  float: right;  line-height: 49px;
+        width: 31%;  float: right;  line-height: 43px;
         padding-top: 20px;
     }
 
@@ -90,6 +90,7 @@ AppAsset::register($this);
     }
     .operator{
         line-height: 24px;
+        width: 100%;
     }
     .auto-mobile{
         line-height: 36px;
