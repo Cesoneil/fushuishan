@@ -2,7 +2,7 @@
 
 //* @var $form yii\bootstrap\ActiveForm */
 $this->title = '【限时免费体验】解决 男性阳痿、早泄、勃起无力等问题，延长性爱时间、增大增粗--选择知缘堂';
-
+//标题部分可以更改
 use yii\bootstrap\ActiveForm;
 use html5\assets\AppAsset;
 AppAsset::register($this);
@@ -45,7 +45,6 @@ AppAsset::register($this);
         position: fixed;
         bottom: 0px;
         z-index: 2;
-        display: block;
     }
     .agree{  font-size: 12px;  }
     .field-member-gender{
@@ -84,31 +83,43 @@ AppAsset::register($this);
         right: 5px;
         bottom: 80px;
     }
-
+    .btn-submit {
+        background-color:#4e9fe4;width: 80%;padding: 40px auto;letter-spacing:5px;font-size: 20px;font-weight: 400;
+    }
 </style>
 <div class="position-ref full-height">
     <div class="content">
         <a href="#form">
+<!--            这里可以是多长图片或者单张图片，选择轮播 2 或者纵向排列 1-->
             <img class="user-image" src="<?php echo \yii\helpers\Url::to('@web/resources/img/head_img.jpg');?>"/>
         </a>
         <div class="box-header">
+<!--            这里可以选择总体展示 部分展示 或者不展示 2， 1，0-->
             <span class="header-left">
                 <i class="fa fa-xxx">🔉</i>
-                <span> <span style="color: red;">北京 陈** 178****8032</span> 已领取</span>
+                <span><span class="focus-info">北京 陈** 178****8032</span> 已领取</span>
             </span>
-            <span class="header-right"> |
+            <span class="header-right" hidden> |
                 <i class="fa fa-xxx">🚩</i>
                 <span>已有<span class="total-human focus-info">8532</span>人领取</span>
             </span>
         </div>
         <div id="form" class="box">
+<!--            需要对真个表单说明以加密和必填项处理，信息提交成功以后对表单内容加密处理-->
             <?php $form = ActiveForm::begin([
                 'id' => 'register-form'
             ]); ?>
             <div class="box-body">
                 <?= $form->field($model, 'realname')->textInput() ?>
                 <?= $form->field($model, 'mobile')->textInput() ?>
-                <div class="self-mobile"><span class="local-mobile"><i >o</i><span class="info-state">使用本机号码</s></span></div>
+<!--                这里在填入手机号的时候做检测，如果是点击获取的手机号 或者手机号为空 和不全的情况下，需要展示，-->
+<!--                如果是自己输入的情况下，隐藏并且长度放到最大-->
+                <div class="self-mobile">
+                    <span class="local-mobile">
+                        <i hidden>o</i><span class="info-state">使用本机号码</span>
+                    </span>
+                </div>
+<!--                这里需要对号码进行检测三大运营伤的服务条款-->
                 <span class="agree operator">使用本机号码即为同意
                     <span class="info-state">
                         <span class="move">《中国移动服务条款》</span>
@@ -129,18 +140,23 @@ AppAsset::register($this);
                 <span class="agree auto-mobile">自动输入历史手机号<span class="info-state">《个人信息授权与保护声明》</span></span>
             </div>
             <div class="box-footer text-center">
-                <button style="background-color:#4e9fe4;width: 80%;padding: 40px auto;letter-spacing:5px;font-size: 20px;font-weight: 400" class="btn btn-primary" type="submit">立即提交</button>
+                <button class="btn btn-submit btn-primary" type="submit">立即提交</button>
             </div>
             <?php ActiveForm::end(); ?>
         </div>
+<!--        这里的图片可以1张或者多张选择展示或者不展示，这里只适合竖向展示。-->
         <a href="#form">
             <img class="user-image" src="<?php echo \yii\helpers\Url::to('@web/resources/img/zhucedan_bg.jpg');?>"/>
         </a>
-        <div class="support">优瑞建站仅向商家提供技术支持</div>
+<!--        这里提供支持可以选择展示或者不展示，作为技术方必须展示-->
+        <div class="support">优瑞建站提供技术支持</div>
     </div>
-    <div class="agreement agree" hidden>提交即视为您已阅读并同意<span class="info-state"><<个人信息保护声明>></span></div>
+<!--    这里提供是否可以展示或者不展示处理 ,如果不展示需要把.content对底部的padding的50像素取消-->
+    <div class="agreement agree">提交即视为您已阅读并同意<span class="info-state"><<个人信息保护声明>></span></div>
     <div hidden>
          成功弹窗，并且产生邀请码。深度挖掘  这是发送验证码的页面
     </div>
-    <div class="call">电话</div>
+<!--    这里提供不同商户不同电话可以拨打展示方式-->
+    <div class="call" hidden>电话</div>
+<!--    共有7个弹窗，1个运营商服务条款 1个手机验证码，1个提交成功弹窗，1个商户用的信息申明弹窗 1个官方使用信息申明弹窗 1个电话弹窗，再加一个异常弹窗-->
 </div>
