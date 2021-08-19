@@ -8,9 +8,15 @@ use html5\assets\AppAsset;
 AppAsset::register($this);
 ?>
 <style>
-    .has-success .form-control .control-label{
-        border-color: #4e9fe4 !important;
+    .has-success .form-control {
+        border-color: #ccc !important;
     }
+     .has-success .control-label {
+        color: #76838f !important;
+     }
+     .label{
+         font-weight:100 !important;
+     }
     .content{
         z-index: 1;
         padding-bottom: 50px;
@@ -32,7 +38,7 @@ AppAsset::register($this);
         text-align: left;
     }
     .info-state{
-        color: blue;
+        color: #4e9fe4;
     }
     .support{
         font-size: 12px;
@@ -108,7 +114,7 @@ AppAsset::register($this);
             </span>
         </div>
         <div id="form" class="box">
-<!--            需要对真个表单说明以加密和必填项处理，信息提交成功以后对表单内容加密处理-->
+<!--  (您的姓名 您的电话（以加密，放心填写）*)          需要对真个表单说明以加密和必填项处理，信息提交成功以后对表单内容加密处理-->
             <?php $form = ActiveForm::begin([
                 'id' => 'register-form'
             ]); ?>
@@ -119,7 +125,7 @@ AppAsset::register($this);
 <!--                如果是自己输入的情况下，隐藏并且长度放到最大-->
                 <div class="self-mobile">
                     <span class="local-mobile">
-                        <i hidden>o</i><span class="info-state">使用本机号码</span>
+                        <i hidden>o</i><span class="info-state"> 使用本机号码</span>
                     </span>
                 </div>
 <!--                这里需要对号码进行检测三大运营伤的服务条款-->
