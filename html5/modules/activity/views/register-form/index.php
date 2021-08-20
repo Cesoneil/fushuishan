@@ -113,7 +113,7 @@ AppAsset::register($this);
     }
     .mobile{
         display: block;
-       width:100%;height: 69px;
+       width:100%;height: 60px;
     }
 </style>
 <div class="">
