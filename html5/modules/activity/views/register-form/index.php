@@ -174,7 +174,7 @@ AppAsset::register($this);
             </div>
             <?php ActiveForm::end(); ?>
         </div>
-<!--        这里的图片可以1张或者多张选择展示或者不展示，这里只适合竖向展示。-->
+<!--        这里的图片可以0张或者多张选择展示这里只适合竖向展示。-->
         <a href="#form">
             <img class="user-image" src="<?php echo \yii\helpers\Url::to('@web/resources/img/zhucedan_bg.jpg');?>"/>
         </a>
