@@ -19,6 +19,8 @@ AppAsset::register($this);
      }
      .form-control{
         color: #000000;
+         font-size: 14px;
+         font-weight: 500;
      }
     .content{
         z-index: 1;
@@ -138,7 +140,7 @@ AppAsset::register($this);
 <!--                这里在填入手机号的时候做检测，如果是点击获取的手机号 或者手机号为空 和不全的情况下，需要展示，-->
 <!--                如果是自己输入的情况下，隐藏并且长度放到最大-->
                 <div class="self-mobile">
-                    <span class="local-mobile">
+                    <span class="local-mobile agree">
                         <i hidden>o</i><span class="info-state"> 使用本机号码</span>
                     </span>
                 </div>
