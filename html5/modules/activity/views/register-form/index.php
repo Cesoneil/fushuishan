@@ -136,6 +136,7 @@ AppAsset::register($this);
             ]); ?>
             <div class="box-body">
                 <?= $form->field($model, 'realname')->textInput() ?>
+                <div style="display: block;width:100%;height: 69px;">
                 <?= $form->field($model, 'mobile')->textInput() ?>
 <!--                这里在填入手机号的时候做检测，如果是点击获取的手机号 或者手机号为空 和不全的情况下，需要展示，-->
 <!--                如果是自己输入的情况下，隐藏并且长度放到最大-->
@@ -143,6 +144,7 @@ AppAsset::register($this);
                     <span class="local-mobile agree">
                         <i hidden>o</i><span class="info-state"> 使用本机号码</span>
                     </span>
+                </div>
                 </div>
 <!--                这里需要对号码进行检测三大运营伤的服务条款-->
                 <span class="agree operator">使用本机号码即为同意
