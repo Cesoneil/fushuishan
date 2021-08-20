@@ -20,7 +20,7 @@ AppAsset::register($this);
      .form-control{
         color: #000000;
          font-size: 14px;
-         font-weight: 500;
+         font-weight: 400;
      }
     .content{
         z-index: 1;
