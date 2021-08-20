@@ -112,8 +112,7 @@ AppAsset::register($this);
         background-color:#4e9fe4;width: 80%;padding: 40px auto;letter-spacing:5px;font-size: 20px;font-weight: 400;
     }
     .mobile{
-        display: block;
-       width:100%;height: 60px;
+       width:100%;height: 69px;
     }
 </style>
 <div class="">
