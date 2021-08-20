@@ -8,8 +8,8 @@ use yii\captcha\Captcha;
 
 <body class="hold-transition login-page">
 <div class="video">
-    <video  autoplay="autoplay" loop="loop" muted="muted"
-           src="<?php echo \yii\helpers\Url::to('@web/resources/video/video_bg.mp4');?>" class="video-bg"></video>
+<!--    <video  autoplay="autoplay" loop="loop" muted="muted"-->
+<!--           src="--><?php //echo \yii\helpers\Url::to('@web/resources/video/video_bg.mp4');?><!--" class="video-bg"></video>-->
     <div class="login-box">
         <div class="login-logo">
             <?= Html::encode(Yii::$app->params['adminTitle']); ?>
