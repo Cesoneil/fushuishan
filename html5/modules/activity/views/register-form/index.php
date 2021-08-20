@@ -15,7 +15,7 @@ AppAsset::register($this);
         color: #76838f;
      }
      label{
-         font-weight:400;
+         font-weight:300;
      }
      .form-control{
         color: #000000;
