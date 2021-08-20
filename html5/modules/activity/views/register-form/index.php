@@ -67,7 +67,7 @@ AppAsset::register($this);
         bottom: 0px;
         z-index: 2;
     }
-    .agree{  font-size: 12px;  }
+    .agree{  font-size: 12px; font-weight: 300; }
     .field-member-gender{
         width: 15%;  float: left;
     }
@@ -87,6 +87,7 @@ AppAsset::register($this);
     }
     .total-human{
         font-size: 14px;
+        font-weight: 500;
     }
     .operator{
         line-height: 24px;
