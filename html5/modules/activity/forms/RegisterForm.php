@@ -38,7 +38,7 @@ class RegisterForm extends Model{
     public function attributeLabels()
     {
         return [
-            'verifyCode' => '验证码',
+            'verifyCode' => '您的姓名 您的电话（以加密，放心填写）*',
         ];
     }
 }
