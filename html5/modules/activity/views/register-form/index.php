@@ -178,7 +178,7 @@ AppAsset::register($this);
         <a href="#form">
             <img class="user-image" src="<?php echo \yii\helpers\Url::to('@web/resources/img/zhucedan_bg.jpg');?>"/>
         </a>
-<!--        这里提供支持可以选择展示或者不展示，作为技术方必须展示-->
+<!--   platform_support     这里提供支持可以选择展示或者不展示，作为技术方必须展示-->
         <div class="support">优瑞建站提供技术支持</div>
     </div>
 <!--    这里提供是否可以展示或者不展示处理 ,如果不展示需要把.content对底部的padding的50像素取消-->

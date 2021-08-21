@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Class m210820_141231_register_form_sys_config
+ * Class m210820_141748_common_service_agreements
  */
-class m210820_141231_register_form_sys_config extends Migration
+class m210820_141748_common_service_agreements extends Migration
 {
     /**
      * {@inheritdoc}
@@ -16,20 +16,17 @@ class m210820_141231_register_form_sys_config extends Migration
         $this->execute('SET foreign_key_checks = 0');
 
         /* 创建表 */
-        $this->createTable('{{%register_form_sys_config}}', [
-            'id' => "int(10) unsigned NOT NULL COMMENT '主键'",
-            'merchant_id' => "int(10) unsigned NULL DEFAULT '0' COMMENT '商户id'",
-            //肯定都不想展示'platform_agreement' => "tinyint(1) unsigned NULL DEFAULT '1' COMMENT '平台协议展示[0:不展示;1:展示]'",
-            //肯定都不想展示'platform_support' => "tinyint(1) unsigned NULL DEFAULT '1' COMMENT '平台支持展示[0:不展示;1:展示]'",
-
+        $this->createTable('{{%common_service_agreements}}', [
+            'uuid' => "char(32) unsigned NOT NULL COMMENT '主键'",
+            'cate' => "varchar(30) NOT NULL DEFAULT '' COMMENT '协议类别'",
+            'detail_cate' => "varchar(30) NOT NULL DEFAULT '' COMMENT '协议所属'",
+            'agreement' => "text NOT NULL COMMENT '协议内容'",
             'status' => "tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态[-1:删除;0:禁用;1启用]'",
             'created_at' => "int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间'",
             'updated_at' => "int(10) unsigned NOT NULL DEFAULT '0' COMMENT '修改时间'",
-            'PRIMARY KEY (`id`)'
-        ], "ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COMMENT='公用_配置表'");
+        ], "ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COMMENT='服务协议表'");
 
         /* 索引设置 */
-        $this->createIndex('merchant_id','{{%register_form_sys_config}}','merchant_id',0);
 
         /* 设置外键约束 */
         $this->execute('SET foreign_key_checks = 1;');
@@ -42,7 +39,7 @@ class m210820_141231_register_form_sys_config extends Migration
     {
         $this->execute('SET foreign_key_checks = 0');
         /* 删除表 */
-        $this->dropTable('{{%register_form_sys_config}}');
+        $this->dropTable('{{%common_service_agreements}}');
         $this->execute('SET foreign_key_checks = 1;');
     }
 
@@ -55,7 +52,7 @@ class m210820_141231_register_form_sys_config extends Migration
 
     public function down()
     {
-        echo "m210820_141231_register_form_sys_config cannot be reverted.\n";
+        echo "m210820_141748_common_service_agreements cannot be reverted.\n";
 
         return false;
     }
