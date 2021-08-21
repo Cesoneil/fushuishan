@@ -17,7 +17,7 @@ class m210820_141748_common_service_agreements extends Migration
 
         /* 创建表 */
         $this->createTable('{{%common_service_agreements}}', [
-            'uuid' => "char(32) unsigned NOT NULL COMMENT '主键'",
+            'uuid' => "char(32) NOT NULL COMMENT '主键'",
             'cate' => "varchar(30) NOT NULL DEFAULT '' COMMENT '协议类别'",
             'detail_cate' => "varchar(30) NOT NULL DEFAULT '' COMMENT '协议所属'",
             'agreement' => "text NOT NULL COMMENT '协议内容'",
