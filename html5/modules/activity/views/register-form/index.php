@@ -110,8 +110,8 @@ AppAsset::register($this);
     .btn-submit {
         background-color:#4e9fe4;width: 80%;padding: 40px auto;letter-spacing:5px;font-size: 20px;font-weight: 400;
     }
-    .mobile{
-       width:100%;height: 55px;
+    /*.mobile{*/
+       /*width:100%;height: 55px;*/
     }
 </style>
 <div class="">
