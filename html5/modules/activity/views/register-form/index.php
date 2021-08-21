@@ -31,7 +31,6 @@ AppAsset::register($this);
         margin: -3px auto;
     }
     .row > .col-lg-4 {
-        display: block;
         width: 33.33%;
         float: left;
     }
@@ -73,13 +72,13 @@ AppAsset::register($this);
     .field-member-gender{
         width: 15%;  float: left;
     }
-    .field-member-mobile{
-        width: 75%;  display: inline-block;
-    }
-    .self-mobile {
-        width: 25%;  float: right;  line-height: 35px;
-        padding-top: 20px;
-    }
+    /*.field-member-mobile{*/
+        /*width: 75%;  display: inline-block;*/
+    /*}*/
+    /*.self-mobile {*/
+        /*width: 25%;  float: right;  line-height: 35px;*/
+        /*padding-top: 20px;*/
+    /*}*/
 
     .box-header{
         background-color: #f1f1f1;height: 30px;line-height: 30px;padding-left: 10px;
@@ -143,20 +142,20 @@ AppAsset::register($this);
                     <?= $form->field($model, 'mobile')->textInput() ?>
     <!--                这里在填入手机号的时候做检测，如果是点击获取的手机号 或者手机号为空 和不全的情况下，需要展示，-->
     <!--                如果是自己输入的情况下，隐藏并且长度放到最大-->
-                    <div class="self-mobile">
-                        <span class="local-mobile agree">
-                            <i hidden>o</i><span class="info-state"> 使用本机号码</span>
-                        </span>
-                    </div>
+<!--                    <div class="self-mobile">-->
+<!--                        <span class="local-mobile agree">-->
+<!--                            <i hidden>o</i><span class="info-state"> 使用本机号码</span>-->
+<!--                        </span>-->
+<!--                    </div>-->
                 </div>
 <!--                这里需要对号码进行检测三大运营伤的服务条款-->
-                <span class="agree operator">使用本机号码即为同意
-                    <span class="info-state">
-                        <span class="move">《中国移动服务条款》</span>
-                        <span class="unicom" hidden>《中国联通服务条款》</span>
-                        <span class="telecom" hidden>《中国电信服务条款》</span>
-                    </span>
-                </span>
+<!--                <span class="agree operator">使用本机号码即为同意-->
+<!--                    <span class="info-state">-->
+<!--                        <span class="move">《中国移动服务条款》</span>-->
+<!--                        <span class="unicom" hidden>《中国联通服务条款》</span>-->
+<!--                        <span class="telecom" hidden>《中国电信服务条款》</span>-->
+<!--                    </span>-->
+<!--                </span>-->
                 <?= \common\widgets\provinces\Provinces::widget([
                     'form' => $form,
                     'model' => $model,

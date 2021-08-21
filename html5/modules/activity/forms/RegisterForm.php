@@ -14,7 +14,7 @@ class RegisterForm extends Model{
     public $name;
     public $mobile;
     public $address;
-    public $channel;
+    public $source;
 
 
     /**
