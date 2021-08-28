@@ -1,14 +1,13 @@
 <?php
 
-namespace addons\ResourcesCenter;
+namespace addons\AdvertisingMarketing;
 
 use common\components\BaseAddonConfig;
-use addons\ResourcesCenter\common\components\Bootstrap;
+use addons\AdvertisingMarketing\common\components\Bootstrap;
 
 /**
  * Class Addon
- * @package addons\ResourcesCenter
- */
+ * @package addons\AdvertisingMarketing */
 class AddonConfig extends BaseAddonConfig
 {
     /**
@@ -17,10 +16,10 @@ class AddonConfig extends BaseAddonConfig
      * @var array
      */
     public $info = [
-        'name' => 'ResourcesCenter',
-        'title' => '数据中心',
-        'brief_introduction' => '为企业对用户精细化管理和营销而设计',
-        'description' => '强大的资源中心用于管控资源渠道、用户交易信息、对用户所有信息进行收集、整理精细化分类。',
+        'name' => 'AdvertisingMarketing',
+        'title' => '媒体营销',
+        'brief_introduction' => '一站式解决多有媒体渠道广告投放方案',
+        'description' => '打通所有线上平台广告营销，为所有中小企业一站式解决所有客户来源的问题',
         'author' => 'Cesoneil',
         'version' => '1.0.1',
     ];
@@ -49,7 +48,7 @@ class AddonConfig extends BaseAddonConfig
     *
     * @var Bootstrap
     */
-    public $bootstrap = Bootstrap::class;
+    public $bootstrap = '';
 
     /**
     * 服务层
@@ -80,7 +79,7 @@ class AddonConfig extends BaseAddonConfig
      *
      * @var bool
      */
-    public $isRule = false;
+    public $isRule = true;
 
     /**
     * 商户路由映射
@@ -89,7 +88,7 @@ class AddonConfig extends BaseAddonConfig
     *
     * @var bool
     */
-    public $isMerchantRouteMap = false;
+    public $isMerchantRouteMap = true;
 
     /**
      * 类别

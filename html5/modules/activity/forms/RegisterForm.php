@@ -16,7 +16,14 @@ class RegisterForm extends Model{
     public $address;
     public $source;
 
-
+//* @property string $register_form_id 商户注册单ID
+//* @property string $name 姓名
+//* @property string $mobile 电话
+//* @property int $province_id 省
+//* @property int $city_id 城市
+//* @property int $area_id 地区
+//* @property string $address 地址
+//* @property string $source 来源
     /**
      * {@inheritdoc}
      */

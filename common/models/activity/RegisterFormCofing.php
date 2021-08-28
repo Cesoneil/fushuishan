@@ -65,7 +65,7 @@ class RegisterFormCofing extends \common\models\base\BaseModel
             'agreement' => '家协议内容',//如果为空使用默认协议
             'footer_img' => '尾部图片',
             'support_phone' => ' 咨询电话',
-            'register_number' => '册数量',
+            'register_number' => '注册数量',
             'click_number' => '点击数量',
             'status' => '状态',
             'created_at' => '创建时间',
