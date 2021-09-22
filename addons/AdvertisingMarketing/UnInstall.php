@@ -11,7 +11,8 @@ use common\interfaces\AddonWidget;
  * 卸载
  *
  * Class UnInstall
- * @package addons\AdvertisingMarketing */
+ * @package addons\AdvertisingMarketing
+ */
 class UnInstall extends Migration implements AddonWidget
 {
     /**
@@ -23,8 +24,8 @@ class UnInstall extends Migration implements AddonWidget
     */
     public function run($addon)
     {
-        // MigrateHelper::downByPath([
-        //     '@addons/AdvertisingMarketing/console/migrations/'
-        // ]);
+         MigrateHelper::downByPath([
+             '@addons/AdvertisingMarketing/console/migrations/'
+         ]);
     }
 }

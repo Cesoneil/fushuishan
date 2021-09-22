@@ -5,7 +5,7 @@
  * Date: 2021/8/18
  * Time: 12:26 AM
  */
-namespace html5\forms;
+namespace addons\AdvertisingMarketing\html5\modules\activity\forms;
 
 use yii\base\Model;
 

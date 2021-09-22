@@ -11,7 +11,8 @@ use common\interfaces\AddonWidget;
  * 安装
  *
  * Class Install
- * @package addons\AdvertisingMarketing */
+ * @package addons\AdvertisingMarketing
+ */
 class Install extends Migration implements AddonWidget
 {
     /**
@@ -23,8 +24,8 @@ class Install extends Migration implements AddonWidget
     */
     public function run($addon)
     {
-        // MigrateHelper::upByPath([
-        //     '@addons/AdvertisingMarketing/console/migrations/'
-        // ]);
+         MigrateHelper::upByPath([
+             '@addons/AdvertisingMarketing/console/migrations/'
+         ]);
     }
 }

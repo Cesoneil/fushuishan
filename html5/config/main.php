@@ -12,9 +12,6 @@ return [
     'controllerNamespace' => 'html5\controllers',
     'bootstrap' => ['log'],
     'modules' => [
-        'activity' => [
-            'class' => 'html5\modules\activity\Module',
-        ]
     ],
     'components' => [
         'request' => [

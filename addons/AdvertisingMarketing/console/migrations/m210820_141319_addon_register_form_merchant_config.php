@@ -5,7 +5,7 @@ use yii\db\Migration;
 /**
  * Class m210820_141319_register_form_merchant_config
  */
-class m210820_141319_register_form_merchant_config extends Migration
+class m210820_141319_addon_register_form_merchant_config extends Migration
 {
     /**
      * {@inheritdoc}
@@ -17,7 +17,7 @@ class m210820_141319_register_form_merchant_config extends Migration
         $this->execute('SET foreign_key_checks = 0');
 
         /* 创建表 */
-        $this->createTable('{{%register_form_merchant_config}}', [
+        $this->createTable('{{%addon_register_form_merchant_config}}', [
             'uuid' => "char(32) NOT NULL ",
             'merchant_id' => "int(10) unsigned NULL DEFAULT '0' COMMENT '商户id'",
             'merchant_name'=> "varchar(20) NULL DEFAULT '' COMMENT '商户展示名称'",
@@ -54,7 +54,7 @@ class m210820_141319_register_form_merchant_config extends Migration
     {
         $this->execute('SET foreign_key_checks = 0');
         /* 删除表 */
-        $this->dropTable('{{%register_form_merchant_config}}');
+        $this->dropTable('{{%addon_register_form_merchant_config}}');
         $this->execute('SET foreign_key_checks = 1;');
     }
 

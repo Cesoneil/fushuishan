@@ -5,7 +5,7 @@ use yii\db\Migration;
 /**
  * Class m210820_141358_register_form_users
  */
-class m210820_141358_register_form_users extends Migration
+class m210820_141358_addon_register_form_users extends Migration
 {
     /**
      * {@inheritdoc}
@@ -16,7 +16,7 @@ class m210820_141358_register_form_users extends Migration
         $this->execute('SET foreign_key_checks = 0');
 
         /* 创建表 */
-        $this->createTable('{{%register_form_users}}', [
+        $this->createTable('{{%addon_register_form_users}}', [
             'id' => "int(11) NOT NULL AUTO_INCREMENT",
             'merchant_id' => "char(32) NOT NULL DEFAULT '0' COMMENT '商户id'",
             'register_form_id' => "int(10) unsigned NULL DEFAULT '0' COMMENT '注册单id'",
@@ -48,7 +48,7 @@ class m210820_141358_register_form_users extends Migration
     {
         $this->execute('SET foreign_key_checks = 0');
         /* 删除表 */
-        $this->dropTable('{{%register_form_users}}');
+        $this->dropTable('{{%addon_register_form_users}}');
         $this->execute('SET foreign_key_checks = 1;');
     }
 

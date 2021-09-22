@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     // ----------------------- 菜单配置 ----------------------- //
     'config' => [
         // 菜单配置
@@ -11,6 +10,17 @@ return [
         ],
         // 子模块配置
         'modules' => [
+            'activity' => [
+                'class' => 'addons\AdvertisingMarketing\html5\modules\activity\Module'
+            ],
+        ],
+        'controllerMap' => [
+            // 'file' => 'common\controllers\FileBaseController', // 文件上传公共控制器
+            //'ueditor' => 'common\widgets\ueditor\UeditorController', // 百度编辑器
+            'provinces' => 'common\widgets\provinces\ProvincesController', // 省市区
+            // 'select-map' => 'common\widgets\selectmap\MapController', // 经纬度选择
+            // 'cropper' => 'common\widgets\cropper\CropperController', // 图片裁剪
+            // 'notify' => 'backend\widgets\notify\NotifyController', // 消息
         ],
     ],
 

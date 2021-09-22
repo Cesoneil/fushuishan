@@ -7,7 +7,8 @@ use addons\AdvertisingMarketing\common\components\Bootstrap;
 
 /**
  * Class Addon
- * @package addons\AdvertisingMarketing */
+ * @package addons\AdvertisingMarketing
+ */
 class AddonConfig extends BaseAddonConfig
 {
     /**
@@ -48,7 +49,7 @@ class AddonConfig extends BaseAddonConfig
     *
     * @var Bootstrap
     */
-    public $bootstrap = '';
+    public $bootstrap = Bootstrap::class;
 
     /**
     * 服务层

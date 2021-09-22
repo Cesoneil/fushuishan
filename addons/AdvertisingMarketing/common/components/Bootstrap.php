@@ -9,7 +9,8 @@ use common\interfaces\AddonWidget;
  * Bootstrap
  *
  * Class Bootstrap
- * @package addons\AdvertisingMarketing\common\config */
+ * @package addons\AdvertisingMarketing\common\config
+ */
 class Bootstrap implements AddonWidget
 {
     /**

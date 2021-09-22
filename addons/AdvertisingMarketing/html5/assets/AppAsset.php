@@ -15,14 +15,16 @@ class AppAsset extends AssetBundle
     /**
      * @var string
      */
-    public $sourcePath = '@addons/AdvertisingMarketing/html5/resources/';
-
+    public $sourcePath = '@addons/AdvertisingMarketing/html5/';
     public $css = [
+        'resources/css/zhucedan.css'
     ];
 
     public $js = [
     ];
 
     public $depends = [
+        'yii\web\YiiAsset',
+        'yii\bootstrap\BootstrapAsset',
     ];
 }

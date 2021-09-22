@@ -1,5 +1,5 @@
 <?php
-namespace common\models\activity;
+namespace addons\AdvertisingMarketing\common\models\activity;
 use common\models\base\BaseModel;
 
 /**
@@ -10,7 +10,7 @@ use common\models\base\BaseModel;
  */
 
 /**
- * This is the model class for table "fss_register_form_merchant_config".
+ * This is the model class for table "fss_addons_register_form_merchant_config".
  *
  * @property int $id 主键
  * @property int $merchant_id 商户ID
@@ -32,7 +32,7 @@ class RegisterUser extends BaseModel{
      */
     public static function tableName()
     {
-        return '{{%fss_register_form_merchant_config}}';
+        return '{{%fss_addons_register_form_merchant_config}}';
     }
 
     /**

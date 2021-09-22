@@ -5,7 +5,7 @@ use yii\db\Migration;
 /**
  * Class m210820_141748_common_service_agreements
  */
-class m210820_141748_common_service_agreements extends Migration
+class m210820_141748_addon_common_service_agreements extends Migration
 {
     /**
      * {@inheritdoc}
@@ -39,7 +39,7 @@ class m210820_141748_common_service_agreements extends Migration
     {
         $this->execute('SET foreign_key_checks = 0');
         /* 删除表 */
-        $this->dropTable('{{%common_service_agreements}}');
+        $this->dropTable('{{%addon_common_service_agreements}}');
         $this->execute('SET foreign_key_checks = 1;');
     }
 

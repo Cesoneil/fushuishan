@@ -1,0 +1,172 @@
+html, body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Roboto, sans-serif';
+    /*Raleway', sans-serif;*/
+    font-weight: 300;
+    height: 100vh;
+    margin: 0;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    font-size: 84px;
+}
+
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+.has-success .form-control {
+    border-color: #ccc;
+}
+
+.has-success .control-label {
+    color: #76838f;
+}
+
+label {
+    font-weight: 300;
+}
+
+.form-control {
+    color: #000000;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.content {
+    z-index: 1;
+    padding-bottom: 0px;
+}
+
+.form-group {
+    margin: -3px auto;
+}
+
+.row > .col-lg-4 {
+    width: 33.33%;
+    float: left;
+}
+
+.user-image {
+    width: 100%;
+}
+
+.box {
+    margin: 10px 15px;
+    text-align: left;
+}
+
+.info-state {
+    color: #4e9fe4;
+}
+
+.support {
+    font-size: 12px;
+    line-height: 30px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.agreement {
+    width: 100%;
+    text-align: center;
+    background-color: #f4f4f4;
+    line-height: 50px;
+    position: fixed;
+    bottom: 0px;
+    z-index: 2;
+}
+
+.agree {
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.field-member-gender {
+    width: 15%;
+    float: left;
+}
+
+.box-header {
+    background-color: #f1f1f1;
+    height: 30px;
+    line-height: 30px;
+}
+
+.focus-info {
+    color: red;
+}
+
+.total-human {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.operator {
+    line-height: 24px;
+    width: 100%;
+}
+
+.auto-mobile {
+    line-height: 36px;
+}
+
+.call {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: solid red 1px;
+    z-index: 3;
+    position: fixed;
+    right: 5px;
+    bottom: 80px;
+}
+
+.btn-submit {
+    background-color: #4e9fe4;
+    width: 80%;
+    padding: 40px auto;
+    letter-spacing: 5px;
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 10px;
+}
+
+.row {
+    height: 66px;
+}
