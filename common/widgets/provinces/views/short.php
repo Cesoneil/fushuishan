@@ -57,7 +57,7 @@ $level >= 5 &&$villageId = Html::getInputId($model, $villageName);
     function widget_provinces(obj, type_id, cityId, areaId, townshipId, villageId) {
         switch (type_id) {
             case 1 :
-                $(".form-group.field-" + areaId).hide();
+               // $(".form-group.field-" + areaId).hide();
                 $(".form-group.field-" + townshipId).hide();
                 $(".form-group.field-" + villageId).hide();
                 break;
