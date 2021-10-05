@@ -24,7 +24,7 @@ class ProvincesController extends yii\web\Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['@'],// 登录
+                      //  'roles' => ['@'],// 登录
                     ],
                 ],
             ],
