@@ -11,6 +11,10 @@ return [
         ],
         // 子模块配置
         'modules' => [
+            /** ------ 基础模块 ------ **/
+            'base' => [
+                'class' => 'addons\AdvertisingMarketing\merchant\modules\base\Module',
+            ],
         ],
     ],
 
@@ -25,7 +29,7 @@ return [
     'menu' => [
         [
             'title' => '注册单推广',
-            'route' => 'register-form/index',
+            'route' => 'base/register-form-config/index',
             'icon' => 'fa fa-pencil-square-o',
             'params' => [
             
@@ -41,8 +45,8 @@ return [
 
     'authItem' => [
         [
-            'title' => '所有权限',
-            'name' => '*',
+            'title' => '注册单推广',
+            'name' => 'base/register-form-config/*',
         ],
     ],
 ];

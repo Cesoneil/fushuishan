@@ -10,13 +10,13 @@ class m210820_141748_addon_common_service_agreements extends Migration
     /**
      * {@inheritdoc}
      */
-    public function safeUp()
+    public function up()
     {
         /* 取消外键约束 */
         $this->execute('SET foreign_key_checks = 0');
 
         /* 创建表 */
-        $this->createTable('{{%common_service_agreements}}', [
+        $this->createTable('{{%addon_common_service_agreements}}', [
             'uuid' => "char(32) NOT NULL COMMENT '主键'",
             'cate' => "varchar(30) NOT NULL DEFAULT '' COMMENT '协议类别'",
             'detail_cate' => "varchar(30) NOT NULL DEFAULT '' COMMENT '协议所属'",
@@ -35,7 +35,7 @@ class m210820_141748_addon_common_service_agreements extends Migration
     /**
      * {@inheritdoc}
      */
-    public function safeDown()
+    public function down()
     {
         $this->execute('SET foreign_key_checks = 0');
         /* 删除表 */

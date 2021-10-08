@@ -10,7 +10,7 @@ class m210820_141358_addon_register_form_users extends Migration
     /**
      * {@inheritdoc}
      */
-    public function safeUp()
+    public function up()
     {
         /* 取消外键约束 */
         $this->execute('SET foreign_key_checks = 0');
@@ -34,7 +34,7 @@ class m210820_141358_addon_register_form_users extends Migration
         ], "ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COMMENT='注册单_用户'");
 
         /* 索引设置 */
-        $this->createIndex('merchant_id','{{%register_form_users}}','merchant_id',0);
+        $this->createIndex('merchant_id','{{%addon_register_form_users}}','merchant_id',0);
         /* 表数据 */
 
         /* 设置外键约束 */
@@ -44,7 +44,7 @@ class m210820_141358_addon_register_form_users extends Migration
     /**
      * {@inheritdoc}
      */
-    public function safeDown()
+    public function down()
     {
         $this->execute('SET foreign_key_checks = 0');
         /* 删除表 */

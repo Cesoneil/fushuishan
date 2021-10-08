@@ -17,7 +17,7 @@ AppAsset::register($this);
     <meta name="format-detection" content="address=no" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <?php $this->registerCsrfMetaTags() ?>
+<!--    --><?php //$this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>

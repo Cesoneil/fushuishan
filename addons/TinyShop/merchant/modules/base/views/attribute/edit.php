@@ -7,7 +7,7 @@ $this->title = $model->isNewRecord ? '创建' : '编辑';
 $this->params['breadcrumbs'][] = ['label' => '规格管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-$updateName = $model->formName() . '[valueData][update]';
+    $updateName = $model->formName() . '[valueData][update]';
 $createName = $model->formName() . '[valueData][create]';
 ?>
 

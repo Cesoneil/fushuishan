@@ -6,11 +6,12 @@
  * Time: 9:42 PM
  */
 namespace addons\AdvertisingMarketing\common\models\activity;
+use common\behaviors\MerchantBehavior;
 
 /**
- * This is the model class for table "fss_addons_register_form_merchant_config".
+ * This is the model class for table "fss_addon_register_form_merchant_config".
  *
- * @property string $uuid 主键
+ * @property int $id 主键
  * @property int $merchant_id 商户id
  * @property string $popularize_img 推广图片
  * @property string $popularize_title 推广标题
@@ -28,14 +29,17 @@ namespace addons\AdvertisingMarketing\common\models\activity;
  * @property int $created_at 创建时间
  * @property string $updated_at 修改时间
  */
-class RegisterFormCofing extends \common\models\base\BaseModel
+class RegisterFormConfig extends \common\models\base\BaseModel
 {
+
+    //use MerchantBehavior;
+
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return '{{%fss_addons_register_form_merchant_config}}';
+        return '{{%addon_register_form_merchant_config}}';
     }
 
     /**
@@ -44,10 +48,10 @@ class RegisterFormCofing extends \common\models\base\BaseModel
     public function rules()
     {
         return [
-            [['merchant_id', 'header_img_show_mode', 'header_dynamic', 'register_number', 'click_number', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['agreement'], 'string', 'safe'],
+            [['id', 'merchant_id', 'header_img_show_mode', 'header_dynamic', 'register_number', 'click_number', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['agreement'], 'string'],
             [['header_img', 'popularize_img','footer_img'], 'string'],
-            [['uuid', 'merchant_name', 'title','popularize_title', 'support_phone'], 'string', 'max' => 50],
+            [[ 'merchant_name', 'title','popularize_title', 'support_phone'], 'string', 'max' => 50],
         ];
     }
 
@@ -57,7 +61,7 @@ class RegisterFormCofing extends \common\models\base\BaseModel
     public function attributeLabels()
     {
         return [
-            'uuid' => 'UUID',
+            'id' => 'ID',
             'merchant_id' => '商户ID',
             'merchant_name' => '商户展示名称',
             'popularize_title' => '推广标题',
