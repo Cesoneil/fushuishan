@@ -54,7 +54,7 @@ $createName = $model->formName() . '[valueData][create]';
                         ],
                     ]
                 ])->hint('支持同时上传多张图片,多张图片之间可拖动调整位置'); ?>
-                <?= $form->field($model, 'support_phone')->textInput()->hint('只能是数字或空值，空值则不显示电话按钮'); ?>
+                <?= $form->field($model, 'support_phone')->textInput()->hint('只能为座机号010-xxxxxxx、400电话、手机号，空值则不显示电话按钮'); ?>
                 <?= $form->field($model, 'status')->radioList(StatusEnum::getMap()) ?>
                 <!--                </div>-->
             </div>
@@ -71,35 +71,12 @@ $createName = $model->formName() . '[valueData][create]';
     // 验证提交
     function beforSubmit() {
         var submit = true;
-
-//        $('.popularize_title').each(function () {
-//            if (!$(this).val()) {
-//                rfAffirm('请填写外部推广标题内容');
-//                submit = false;
-//            }
-//        });
-//        $('.popularize_img').each(function () {
-//            if (!$(this).val()) {
-//                rfAffirm('外部推广图不能为空');
-//                submit = false;
-//            }
-//        });
-//        $('.title').each(function () {
-//            if (!$(this).val()) {
-//                rfAffirm('请填写页面标题内容');
-//                submit = false;
-//            }
-//        });
-//        $('.header_img').each(function () {
-//            if (!$(this).val()) {
-//                rfAffirm('头部图片内容不能为空');
-//                submit = false;
-//            }
-//        });
-
-        $('.support_phone').each(function () {
-            if (isNaN($(this).val())) {
-                rfAffirm('联系电话只能为长度小于13位的数字');
+        $('#registerformconfig-support_phone').each(function () {
+            var reg=/^((0\d{2,3})-)(\d{7,8})$/; //判断为座机号码 0xx-xxxxxxx
+            var reg2=/^400\d{7}$/;               //400电话
+            var reg3 =/^[1][3456789][0-9]{9}$/;  //手机号
+            if($(this).val().length!= 0 && !reg.test($(this).val()) && !reg2.test($(this).val()) && !reg3.test($(this).val())) {
+                rfMsg('联系电话只能为座机号010-xxxx、400电话、手机号');
                 submit = false;
             }
         });

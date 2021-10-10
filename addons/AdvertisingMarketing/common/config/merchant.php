@@ -35,10 +35,7 @@ return [
 
             ],
             'child' => [
-                [
-                    'title' => '注册单信息列表',
-                    'route' => 'base/register-user/index',
-                ],
+
             ],
         ],
 

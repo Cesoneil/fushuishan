@@ -10,15 +10,14 @@ namespace addons\AdvertisingMarketing\merchant\modules\base\controllers;
 use addons\AdvertisingMarketing\common\models\activity\RegisterUser;
 use addons\AdvertisingMarketing\merchant\controllers\BaseController;
 use common\enums\StatusEnum;
+use common\helpers\ExcelHelper;
 use Yii;
 use yii\data\Pagination;
-use addons\AdvertisingMarketing\common\models\activity\RegisterFormConfig;
-use common\models\base\SearchModel;
 use common\traits\MerchantCurd;
 
 /**
- * Class RegisterFormConfigController
- * @package addons\AdvertisingMarketing\merchant\controllers
+ * Class RegisterUserController
+ * @package addons\AdvertisingMarketing\merchant\modules\base\controllers
  */
 class RegisterUserController extends BaseController
 {
@@ -55,7 +54,7 @@ class RegisterUserController extends BaseController
 
         $pages = new Pagination(['totalCount' => $data->count(), 'pageSize' => $this->pageSize]);
         $models = $data->offset($pages->offset)
-            ->orderBy('id desc')
+            ->orderBy('created_at desc')
             ->limit($pages->limit)
             ->all();
 
@@ -92,7 +91,7 @@ class RegisterUserController extends BaseController
         $from_date = $request->get('from_date');
         $to_date = $request->get('to_date');
 
-        $dataList = QrcodeStat::find()
+        $dataList = RegisterUser::find()
             ->where(['between', 'created_at', strtotime($from_date), strtotime($to_date)])
             ->andWhere(['merchant_id' => $this->getMerchantId()])
             ->andFilterWhere(['type' => $request->get('type')])
@@ -104,12 +103,13 @@ class RegisterUserController extends BaseController
 
         $header = [
             ['ID', 'id'],
-            ['场景名称', 'name'],
-            ['openid', 'fans.openid'],
-            ['昵称', 'fans.nickname'],
-            ['场景值', 'scene_str'],
-            ['场景ID', 'scene_id'],
-            ['关注/扫描', 'type', 'selectd', ['' => '全部', '1' => '关注', '2' => '扫描']],
+            ['姓名', 'name'],
+            ['电话', 'mobile'],
+            ['省', 'fans.nickname'],
+            ['市', 'scene_str'],
+            ['区', 'scene_id'],
+            ['详细地址', 'scene_id'],
+            ['来源', 'type', 'selectd', ['' => '全部', '1' => '关注', '2' => '扫描']],
             ['创建时间', 'created_at', 'date', 'Y-m-d H:i:s'],
         ];
 
