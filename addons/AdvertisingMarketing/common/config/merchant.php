@@ -32,13 +32,16 @@ return [
             'route' => 'base/register-form-config/index',
             'icon' => 'fa fa-pencil-square-o',
             'params' => [
-            
-            ],
-            'child' => [
 
             ],
+            'child' => [
+                [
+                    'title' => '注册单信息列表',
+                    'route' => 'base/register-user/index',
+                ],
+            ],
         ],
-    
+
     ],
 
     // ----------------------- 权限配置 ----------------------- //
@@ -46,7 +49,35 @@ return [
     'authItem' => [
         [
             'title' => '注册单推广',
-            'name' => 'base/register-form-config/*',
+            'name' => 'function',
+            'child' => [
+                [
+                    'title' => '注册单列表',
+                    'name' => 'RegisterForm',
+                    'child' => [
+                        [
+                            'title' => '注册单首页',
+                            'name' => 'base/register-form-config/index',
+                        ],
+                        [
+                            'title' => '注册单新增/编辑',
+                            'name' => 'base/register-form-config/edit',
+                        ],
+                        [
+                            'title' => '注册单删除',
+                            'name' => 'base/register-form-config/delete',
+                        ],
+                        [
+                            'title' => '注册单状态修改',
+                            'name' => 'base/register-form-config/ajax-update',
+                        ],
+                        [
+                            'title' => '查看注册用户',
+                            'name' => 'base/register-user/index',
+                        ],
+                    ],
+                ],
+            ]
         ],
     ],
 ];

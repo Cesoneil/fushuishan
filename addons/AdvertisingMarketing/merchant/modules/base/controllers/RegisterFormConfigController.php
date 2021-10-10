@@ -3,6 +3,7 @@ namespace addons\AdvertisingMarketing\merchant\modules\base\controllers;
 
 use addons\AdvertisingMarketing\merchant\controllers\BaseController;
 use common\enums\StatusEnum;
+use common\helpers\Url;
 use Yii;
 use addons\AdvertisingMarketing\common\models\activity\RegisterFormConfig;
 use common\models\base\SearchModel;
@@ -34,7 +35,7 @@ class RegisterFormConfigController extends BaseController
         $searchModel = new SearchModel([
             'model' => RegisterFormConfig::class,
             'scenario' => 'default',
-            'partialMatchAttributes' => ['popularize_title', 'title'], // 模糊查询
+            'partialMatchAttributes' => ['popularize_title'], // 模糊查询
             'defaultOrder' => [
                 'created_at' => SORT_DESC,
             ],
@@ -45,9 +46,10 @@ class RegisterFormConfigController extends BaseController
         $dataProvider->query
             ->andWhere(['>=', 'status', StatusEnum::DISABLED])
             ->andFilterWhere(['merchant_id' => $this->getMerchantId()]);
+
         return $this->render($this->action->id, [
             'dataProvider' => $dataProvider,
-            'searchModel' => $searchModel
+            'searchModel' => $searchModel,
         ]);
     }
 
@@ -75,6 +77,33 @@ class RegisterFormConfigController extends BaseController
         }
         return $this->render($this->action->id, [
             'model' => $model,
+        ]);
+    }
+
+    /**
+     * 编辑/创建
+     *
+     * @return mixed
+     */
+    public function actionRegisterList()
+    {
+        $searchModel = new SearchModel([
+            'model' => RegisterFormConfig::class,
+            'scenario' => 'default',
+            'partialMatchAttributes' => ['popularize_title', 'title'], // 模糊查询
+            'defaultOrder' => [
+                'created_at' => SORT_DESC,
+            ],
+            'pageSize' => $this->pageSize,
+        ]);
+        $dataProvider = $searchModel
+            ->search(Yii::$app->request->queryParams);
+        $dataProvider->query
+            ->andWhere(['>=', 'status', StatusEnum::DISABLED])
+            ->andFilterWhere(['merchant_id' => $this->getMerchantId()]);
+        return $this->render($this->action->id, [
+            'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel
         ]);
     }
 }

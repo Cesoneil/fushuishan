@@ -21,10 +21,10 @@ class m210820_141319_addon_register_form_merchant_config extends Migration
             'id' => "int(11) NOT NULL AUTO_INCREMENT",
             'merchant_id' => "int(10) unsigned NULL DEFAULT '0' COMMENT '商户id'",
             'merchant_name'=> "varchar(20) NULL DEFAULT '' COMMENT '商户展示名称'",
-            'popularize_title' => "varchar(255) NULL DEFAULT '' COMMENT '推广标题'",
-            'popularize_img' => "varchar(255) NULL DEFAULT '' COMMENT '推广图片'",
-            'title' => "varchar(255) NULL DEFAULT '' COMMENT '标题'",
-            'header_img' => "text NULL DEFAULT '' COMMENT '头部图片'",//可以一张或者多张
+            'popularize_title' => "varchar(255) NOT NULL DEFAULT '' COMMENT '推广标题'",
+            'popularize_img' => "varchar(255) NOT NULL DEFAULT '' COMMENT '推广图片'",
+            'title' => "varchar(255) NOT NULL DEFAULT '' COMMENT '标题'",
+            'header_img' => "text NOT NULL DEFAULT '' COMMENT '头部图片'",//可以一张或者多张
             'header_img_show_mode' => "tinyint(1) unsigned NULL DEFAULT '1' COMMENT '头部图片展示方式[1:排列展示;2:轮播展示]'",
             'header_dynamic' => "tinyint(1) unsigned NULL DEFAULT '3' COMMENT '头部动态[0:不展示；1:只展示动态;2:只展示人数;3:全部展示]'",
 //           'default_agreement'=> "tinyint(1) unsigned NULL DEFAULT '1' COMMENT '头部动态[0:不使用；1:使用]'",

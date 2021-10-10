@@ -5,23 +5,83 @@
  * Date: 2021/9/11
  * Time: 9:46 AM
  */
+
 use common\helpers\Url;
-use yii\grid\GridView;
+use yii\widgets\ActiveForm;
+use kartik\daterange\DateRangePicker;
+use yii\helpers\ArrayHelper;
+use addons\AdvertisingMarketing\common\models\activity\RegisterUser;
 use common\helpers\Html;
+use yii\grid\GridView;
 use yii\helpers\BaseHtml;
 use common\helpers\ImageHelper;
 
-$this->title = '注册单推广';
+$addon = <<< HTML
+<span class="input-group-addon">
+    <i class="glyphicon glyphicon-calendar"></i>
+</span>
+HTML;
+
+$this->title = '注册信息列表';
 $this->params['breadcrumbs'][] = ['label' => $this->title];
+
 ?>
+
 
 <div class="row">
     <div class="col-sm-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title"><?= $this->title; ?></h3>
+                <h3 class="box-title"><?= '【注册信息列表】———' . Yii::$app->request->get('popularize_title'); ?></h3>
                 <div class="box-tools">
                     <?= Html::create(['edit']); ?>
+                </div>
+            </div>
+            <div class="row farPaddingJustV">
+                <div class="col-sm-8">
+                    <?php $form = ActiveForm::begin([
+                        'action' => Url::to(['index']),
+                        'method' => 'get'
+                    ]); ?>
+                    <div class="col-sm-4">
+                        <div class="input-group drp-container">
+                            <?= DateRangePicker::widget([
+                                'name' => 'queryDate',
+                                'value' => $from_date . '-' . $to_date,
+                                'readonly' => 'readonly',
+                                'useWithAddon' => true,
+                                'convertFormat' => true,
+                                'startAttribute' => 'from_date',
+                                'endAttribute' => 'to_date',
+                                'startInputOptions' => ['value' => $from_date],
+                                'endInputOptions' => ['value' => $to_date],
+                                'pluginOptions' => [
+                                    'locale' => ['format' => 'Y-m-d'],
+                                ]
+                            ]) . $addon;?>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <?= Html::dropDownList('type', $type, ArrayHelper::merge(['' => '全部'], RegisterUser::$source), ['class'=>'form-control']);?>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="input-group m-b">
+                            <?= Html::textInput('keyword', $keyword, [
+                                'placeholder' => '姓名/电话/地址',
+                                'class' => 'form-control'
+                            ])?>
+                            <?= Html::tag('span', '<button class="btn btn-white"><i class="fa fa-search"></i> 搜索</button>', ['class' => 'input-group-btn'])?>
+                        </div>
+                    </div>
+                    <?php ActiveForm::end(); ?>
+                </div>
+                <div class="col-sm-4">
+                    <div class="pull-right">
+                        关注扫描 <strong class="text-danger"><?= $attention_count ?></strong> 次 ;
+                        已关注扫描 <strong class="text-danger"><?= $scan_count ?></strong> 次 ;
+                        总计 <strong class="text-danger"><?= $pages->totalCount ?></strong> 次 ;
+                        <?= Html::a('导出Excel', ['export','from_date' => $from_date,'to_date' => $to_date,'type' => $type,'keyword' => $keyword])?>
+                    </div>
                 </div>
             </div>
             <div class="box-body table-responsive">
@@ -130,7 +190,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
                             'template' => '{update}',
                             'buttons' => [
                                 'update' => function ($url, $model, $key) {
-                                    return Html::a('点击查看', ['register-user/index', 'popularize_title' => $model->popularize_title,'register_form_id'=> $model->id], [
+                                    return Html::a('点击查看', [Url::to(['register-user/index']), 'popularize_title' => $model->popularize_title], [
                                         'class' => 'purple btn btn-white btn-sm',
                                     ]);
                                 },
@@ -139,7 +199,6 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
                     ],
                 ]); ?>
             </div>
-
             <!-- /.tab-content -->
         </div>
         <!-- /.nav-tabs-custom -->

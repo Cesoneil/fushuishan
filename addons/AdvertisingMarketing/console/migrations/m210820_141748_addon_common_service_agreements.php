@@ -17,13 +17,14 @@ class m210820_141748_addon_common_service_agreements extends Migration
 
         /* 创建表 */
         $this->createTable('{{%addon_common_service_agreements}}', [
-            'uuid' => "char(32) NOT NULL COMMENT '主键'",
+            'id' => "int(10) NOT NULL AUTO_INCREMENT COMMENT '主键'",
             'cate' => "varchar(30) NOT NULL DEFAULT '' COMMENT '协议类别'",
             'detail_cate' => "varchar(30) NOT NULL DEFAULT '' COMMENT '协议所属'",
             'agreement' => "text NOT NULL COMMENT '协议内容'",
             'status' => "tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态[-1:删除;0:禁用;1启用]'",
             'created_at' => "int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间'",
             'updated_at' => "int(10) unsigned NOT NULL DEFAULT '0' COMMENT '修改时间'",
+            'PRIMARY KEY (`id`)'
         ], "ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COMMENT='服务协议表'");
 
         /* 索引设置 */

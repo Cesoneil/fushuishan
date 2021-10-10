@@ -1,5 +1,7 @@
 <?php
 namespace addons\AdvertisingMarketing\common\models\activity;
+use common\behaviors\MerchantBehavior;
+use common\helpers\RegularHelper;
 use common\models\base\BaseModel;
 
 /**
@@ -14,7 +16,7 @@ use common\models\base\BaseModel;
  *
  * @property int $id 主键
  * @property int $merchant_id 商户ID
- * @property string $register_form_id 商户注册单ID
+ * @property int $register_form_id 商户注册单ID
  * @property string $name 姓名
  * @property string $mobile 电话
  * @property int $province_id 省
@@ -27,6 +29,20 @@ use common\models\base\BaseModel;
  */
 
 class RegisterUser extends BaseModel{
+
+    //use MerchantBehavior;
+
+    const BAIDU = 1;
+    const UC_AGENT = 2;
+
+    /**
+     * @var array
+     */
+    public static $source = [
+        self::BAIDU => '百度推广',
+        self::UC_AGENT => 'UC浏览器',
+    ];
+
     /**
      * {@inheritdoc}
      */
@@ -41,10 +57,10 @@ class RegisterUser extends BaseModel{
     public function rules()
     {
         return [
-            [['merchant_id', 'header_img_show_mode', 'header_dynamic', 'register_number', 'click_number', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['agreement'], 'string', 'safe'],
-            [['header_img', 'footer_img'], 'string'],
-            [['uuid', 'merchant_name', 'title', 'support_phone'], 'string', 'max' => 50],
+            ['mobile', 'match', 'pattern' => RegularHelper::mobile(), 'message' => '请输入正确的手机号码'],
+            [['merchant_id', 'register_form_id', 'mobile', 'province_id', 'city_id', 'area_id', 'created_at', 'updated_at'], 'integer'],
+            [['name', 'address','source'], 'string'],
+            [['name'], 'string', 'max' => 20],
         ];
     }
 

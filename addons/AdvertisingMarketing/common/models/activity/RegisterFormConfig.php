@@ -50,8 +50,9 @@ class RegisterFormConfig extends \common\models\base\BaseModel
         return [
             [['id', 'merchant_id', 'header_img_show_mode', 'header_dynamic', 'register_number', 'click_number', 'status', 'created_at', 'updated_at'], 'integer'],
             [['agreement'], 'string'],
-            [['header_img', 'popularize_img','footer_img'], 'string'],
-            [[ 'merchant_name', 'title','popularize_title', 'support_phone'], 'string', 'max' => 50],
+            [['popularize_title','popularize_img','title','header_img'],'required'],
+            [['header_img','title','popularize_title', 'popularize_img','footer_img'], 'string'],
+            [['merchant_name', 'support_phone'], 'string', 'max' => 50],
         ];
     }
 

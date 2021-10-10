@@ -53,7 +53,7 @@ $createName = $model->formName() . '[valueData][create]';
                             'multiple' => true,
                         ],
                     ]
-                ])->hint('支持同时上传多张图片,多张图片之间可拖动调整位置');?>
+                ])->hint('支持同时上传多张图片,多张图片之间可拖动调整位置'); ?>
                 <?= $form->field($model, 'support_phone')->textInput()->hint('只能是数字或空值，空值则不显示电话按钮'); ?>
                 <?= $form->field($model, 'status')->radioList(StatusEnum::getMap()) ?>
                 <!--                </div>-->
