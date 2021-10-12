@@ -23,8 +23,12 @@ class ProvincesController extends yii\web\Controller
                 'class' => yii\filters\AccessControl::class,
                 'rules' => [
                     [
+                        'actions' =>['index'],
                         'allow' => true,
-                      //  'roles' => ['@'],// 登录
+                    ],
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],// 登录
                     ],
                 ],
             ],
