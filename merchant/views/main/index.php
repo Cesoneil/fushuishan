@@ -5,6 +5,7 @@ use merchant\assets\AppAsset;
 /* @var $this yii\web\View */
 
 AppAsset::register($this);
+
 ?>
 <?php $this->beginPage() ?>
     <!DOCTYPE html>
@@ -14,7 +15,7 @@ AppAsset::register($this);
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="renderer" content="webkit">
         <?= Html::csrfMetaTags() ?>
-        <title><?= Html::encode(Yii::$app->params['adminTitle']);?></title>
+        <title><?= Html::encode(Yii::$app->services->merchant->findById(Yii::$app->services->merchant->getMerchantId())->company_name);?></title>
         <?php $this->head() ?>
     </head>
     <body class="hold-transition skin-blue-light sidebar-mini fixed">
@@ -23,7 +24,8 @@ AppAsset::register($this);
         <!-- 头部区域 -->
         <?= $this->render('_header', [
             'manager' => Yii::$app->user->identity,
-            'menuCates' => Yii::$app->services->menuCate->getOnAuthList()
+            'menuCates' => Yii::$app->services->menuCate->getOnAuthList(),
+            'merchant_name' => Yii::$app->services->merchant->findById(Yii::$app->services->merchant->getMerchantId())->title
         ]); ?>
         <!-- 左侧菜单栏 -->
         <?= $this->render('_left', [

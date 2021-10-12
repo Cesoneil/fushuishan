@@ -9,8 +9,8 @@ namespace addons\AdvertisingMarketing\merchant\modules\base\controllers;
 
 use addons\AdvertisingMarketing\common\models\activity\RegisterUser;
 use addons\AdvertisingMarketing\merchant\controllers\BaseController;
-use common\enums\StatusEnum;
 use common\helpers\ExcelHelper;
+use services\common\ProvincesService;
 use Yii;
 use yii\data\Pagination;
 use common\traits\MerchantCurd;
@@ -29,8 +29,6 @@ class RegisterUserController extends BaseController
      */
     public $modelClass = RegisterUser::class;
 
-
-
     /**
      * 首页
      */
@@ -40,17 +38,21 @@ class RegisterUserController extends BaseController
         $type = $request->get('source', '');
         $keyword = $request->get('keyword', '');
         $register_form_id = $request->get('register_form_id', '');
-        $from_date = $request->get('from_date', date('Y-m-d', strtotime("-60 day")));
-        $to_date = $request->get('to_date', date('Y-m-d', strtotime("+1 day")));
+        $from_date = $request->get('from_date', date('Y-m-d H:i', strtotime("-7 day")));
+        $to_date = $request->get('to_date', date('Y-m-d H:i'));
+        $popularize_title =$request->get('popularize_title');
 
         $data = RegisterUser::find()
             ->where(['merchant_id' => $this->getMerchantId(),'register_form_id' => $register_form_id])
-            ->andFilterWhere(['like', 'name', $keyword])//姓名/电话/地址
+            ->andFilterWhere(['like', 'name', $keyword])
+            ->orFilterWhere(['like', 'mobile', $keyword])
+            ->orFilterWhere(['like', 'address', $keyword])
             ->andFilterWhere(['source' => $type])
             ->andFilterWhere(['between', 'created_at', strtotime($from_date), strtotime($to_date)]);
 
-        $attention_data = clone $data;
-        $scan_data = clone $data;
+        $baidu_data = clone $data;
+        $uc_data = clone $data;
+
 
         $pages = new Pagination(['totalCount' => $data->count(), 'pageSize' => $this->pageSize]);
         $models = $data->offset($pages->offset)
@@ -58,21 +60,31 @@ class RegisterUserController extends BaseController
             ->limit($pages->limit)
             ->all();
 
+//        $province=new ProvincesService();
+//        foreach($models as $model){
+//            $model->province_id = $province->getName($model->province_id);
+//            $model->city_id = $province->getName($model->city_id);
+//            $model->area_id = $province->getName($model->area_id);
+//        }
+
         // 百度推广
-        $attention_count = $attention_data
+        $baidu_count = $baidu_data
             ->andWhere(['source' => RegisterUser::BAIDU])
             ->count();
         // UC推广
-        $scan_count = $scan_data
+        $uc_count = $uc_data
             ->andWhere(['source' => RegisterUser::UC_AGENT])
             ->count();
+
 
         return $this->render('index', [
             'models' => $models,
             'pages' => $pages,
-            'type' => $type,
-            'attention_count' => $attention_count,
-            'scan_count' => $scan_count,
+            'source' => $type,
+            'register_form_id' =>$register_form_id,
+            'baidu_count' => $baidu_count,
+            'uc_count' => $uc_count,
+            'popularize_title' => $popularize_title,
             'keyword' => $keyword,
             'from_date' => $from_date,
             'to_date' => $to_date,
@@ -88,28 +100,35 @@ class RegisterUserController extends BaseController
     public function actionExport()
     {
         $request = Yii::$app->request;
+        $register_form_id = $request->get('register_form_id', 0);
         $from_date = $request->get('from_date');
         $to_date = $request->get('to_date');
-
+        $keyword = $request->get('keyword');
         $dataList = RegisterUser::find()
             ->where(['between', 'created_at', strtotime($from_date), strtotime($to_date)])
-            ->andWhere(['merchant_id' => $this->getMerchantId()])
-            ->andFilterWhere(['type' => $request->get('type')])
-            ->andFilterWhere(['like', 'name', $request->get('keyword')])
+            ->andWhere(['merchant_id' => $this->getMerchantId(),'register_form_id' => $register_form_id])
+            ->andFilterWhere(['source' => $request->get('source')])
+            ->andFilterWhere(['like', 'name', $keyword])
+            ->orFilterWhere(['like', 'mobile', $keyword])
+            ->orFilterWhere(['like', 'address', $keyword])
             ->orderBy('created_at desc')
-            ->with('fans')
             ->asArray()
             ->all();
-
+        $province=new ProvincesService();
+        foreach($dataList as $key => $model){
+            $dataList[$key]['province_id'] = $province->getName($model['province_id']);
+            $dataList[$key]['city_id'] = $province->getName($model['city_id']);
+            $dataList[$key]['area_id'] = $province->getName($model['area_id']);
+        }
         $header = [
             ['ID', 'id'],
             ['姓名', 'name'],
             ['电话', 'mobile'],
-            ['省', 'fans.nickname'],
-            ['市', 'scene_str'],
-            ['区', 'scene_id'],
-            ['详细地址', 'scene_id'],
-            ['来源', 'type', 'selectd', ['' => '全部', '1' => '关注', '2' => '扫描']],
+            ['省', 'province_id'],
+            ['市', 'city_id'],
+            ['区', 'area_id'],
+            ['详细地址', 'address'],
+            ['来源', 'source', 'selectd', ['' => '全部', '1' => '百度推广', '2' => 'UC浏览器']],
             ['创建时间', 'created_at', 'date', 'Y-m-d H:i:s'],
         ];
 

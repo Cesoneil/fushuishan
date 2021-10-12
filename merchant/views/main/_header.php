@@ -11,7 +11,7 @@ use merchant\widgets\notify\Notify;
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><?= Yii::$app->params['adminAcronym']; ?></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><?= Yii::$app->params['adminTitle']; ?></span>
+        <span class="logo-lg"><?= Yii::$app->params['adminTitle'].$merchant_name; ?></span>
     </a>
     <nav class="navbar navbar-static-top">
         <!-- Sidebar toggle button-->
@@ -80,9 +80,9 @@ use merchant\widgets\notify\Notify;
                     </ul>
                 </li>
                 <!-- Control Sidebar Toggle Button -->
-                <li>
-                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                </li>
+<!--                <li>-->
+<!--                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>-->
+<!--                </li>-->
                 <li id="logout" class="hide">
                     <a href="<?= Url::to(['site/logout']); ?>" data-method="post"><i class="fa fa fa-sign-out"></i>退出</a>
                 </li>

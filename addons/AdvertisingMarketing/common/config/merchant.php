@@ -72,6 +72,14 @@ return [
                             'title' => '查看注册用户',
                             'name' => 'base/register-user/index',
                         ],
+                        [
+                            'title' => '删除用户信息',
+                            'name' => 'base/register-user/delete',
+                        ],
+                        [
+                            'title' => '导出信息',
+                            'name' => 'base/register-user/export',
+                        ],
                     ],
                 ],
             ]

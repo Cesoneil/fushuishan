@@ -3,7 +3,7 @@
 return [
     'adminEmail' => 'admin@example.com',
     'adminAcronym' => '震豹',
-    'adminTitle' => '优瑞 - 商户端',
+    'adminTitle' => '商户端 - ',
     'adminDefaultHomePage' => ['main/system'], // 默认主页
     // 登陆后的当前商户信息
     'merchant' => '',

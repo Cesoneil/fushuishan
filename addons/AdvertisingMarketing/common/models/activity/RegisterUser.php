@@ -3,6 +3,7 @@ namespace addons\AdvertisingMarketing\common\models\activity;
 use common\behaviors\MerchantBehavior;
 use common\helpers\RegularHelper;
 use common\models\base\BaseModel;
+use services\common\ProvincesService;
 
 /**
  * Created by PhpStorm.
