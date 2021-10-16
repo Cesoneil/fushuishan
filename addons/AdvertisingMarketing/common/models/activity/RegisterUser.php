@@ -59,10 +59,14 @@ class RegisterUser extends BaseModel
     public function rules()
     {
         return [
+
             ['mobile', 'match', 'pattern' => RegularHelper::mobile(), 'message' => '请输入正确的手机号码'],
-            [['merchant_id', 'register_form_id', 'mobile', 'province_id', 'city_id', 'area_id', 'created_at', 'updated_at'], 'integer'],
+            ['name', 'match', 'pattern' => RegularHelper::isAllChinese(), 'message' => '请输入正确的姓名'],
+            ['address', 'match', 'pattern' => RegularHelper::isAllChinese(), 'message' => '请输入正确的地址'],
+            [['merchant_id','auto_mobile', 'register_form_id', 'mobile', 'province_id', 'city_id', 'area_id', 'created_at', 'updated_at'], 'integer'],
             [['name', 'address', 'source'], 'string'],
             [['name'], 'string', 'max' => 20],
+            [['name','mobile','province_id','city_id','area_id','address'],'required'],
         ];
     }
 
@@ -76,12 +80,13 @@ class RegisterUser extends BaseModel
             'merchant_id' => '商户ID',
             'register_form_id' => '注册单ID',
             'name' => '您的姓名',
-            'mobile' => '您的号码',
+            'mobile' => '手机号码',
             'province_id' => '省',
             'city_id' => '市',
             'area_id' => '区',
             'address' => '地址',
             'source' => '来源',
+            'auto_mobile' => '自动输入历史手机号',
             'created_at' => '创建时间',
             'updated_at' => '修改时间',
         ];

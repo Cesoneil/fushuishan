@@ -14,6 +14,9 @@ return [
     'modules' => [
     ],
     'components' => [
+        'assetManager' => [
+            'linkAssets' => true,
+        ],
         'request' => [
             'csrfParam' => '_csrf-html5',
         ],

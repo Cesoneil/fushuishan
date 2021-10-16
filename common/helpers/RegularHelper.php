@@ -85,4 +85,13 @@ class RegularHelper
     {
         return '/(http:\/\/)|(https:\/\/)/i';
     }
+
+    /**
+     * 判断是否为全中文
+     * @return string
+     */
+    public static function isAllChinese()
+    {
+        return '/^[\x{4e00}-\x{9fa5}]+$/u';
+    }
 }

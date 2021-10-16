@@ -26,7 +26,6 @@ $createName = $model->formName() . '[valueData][create]';
                 ],
             ]); ?>
             <div class="box-body">
-                <!--                <div class="col-lg-12">-->
                 <?= $form->field($model, 'popularize_title')->textInput()->hint('推广标题和推广图片用于外部推广形式所用图片链接，用于外部引流'); ?>
                 <?= $form->field($model, 'popularize_img')->widget(Files::class, [])->hint('作为外部推广主图,只支持上传单张图片，建议尺寸240px*600px'); ?>
                 <?= $form->field($model, 'title')->textInput(); ?>
@@ -56,7 +55,6 @@ $createName = $model->formName() . '[valueData][create]';
                 ])->hint('支持同时上传多张图片,多张图片之间可拖动调整位置'); ?>
                 <?= $form->field($model, 'support_phone')->textInput()->hint('只能为座机号010-xxxxxxx、400电话、手机号，空值则不显示电话按钮'); ?>
                 <?= $form->field($model, 'status')->radioList(StatusEnum::getMap()) ?>
-                <!--                </div>-->
             </div>
             <div class="box-footer text-center">
                 <span class="btn btn-primary" onclick="beforSubmit()">保存</span>

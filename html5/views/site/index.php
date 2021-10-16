@@ -1,6 +1,6 @@
 <?php
 
-$this->title = 'Rageframe';
+$this->title = '优瑞提供技术支持页面';
 ?>
 
 <style>

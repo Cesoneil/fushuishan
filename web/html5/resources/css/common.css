@@ -1,7 +1,7 @@
 html, body {
     background-color: #fff;
     /*color: #636b6f;*/
-    color: #76838f;
+    color: #636b6f;
     /*color: #000;*/
     font-family: 'Roboto, sans-serif';
     /*Raleway', sans-serif;*/
@@ -51,3 +51,13 @@ html, body {
 .m-b-md {
     margin-bottom: 30px;
 }
+.support {
+    font-size: 12px;
+    line-height: 30px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+.info-state {
+    color: #4e9fe4;
+}
+

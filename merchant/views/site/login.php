@@ -1,5 +1,5 @@
 <?php
-$this->title = Yii::$app->params['adminTitle'];
+$this->title = Yii::$app->params['adminTitle'].'优瑞';
 
 use common\helpers\Html;
 use yii\bootstrap\ActiveForm;
@@ -9,7 +9,7 @@ use yii\captcha\Captcha;
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <?= Html::encode(Yii::$app->params['adminTitle']); ?>
+        <?= Html::encode(Yii::$app->params['adminTitle']).'优瑞'; ?>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">

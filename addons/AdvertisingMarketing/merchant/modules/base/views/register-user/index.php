@@ -13,9 +13,6 @@ use yii\helpers\ArrayHelper;
 use addons\AdvertisingMarketing\common\models\activity\RegisterUser;
 use common\helpers\Html;
 use yii\widgets\LinkPager;
-use yii\grid\GridView;
-use yii\helpers\BaseHtml;
-use common\helpers\ImageHelper;
 
 $addon = <<< HTML
 <span class="input-group-addon">
@@ -76,7 +73,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
                     <div class="col-sm-4">
                         <div class="input-group m-b">
                             <?= Html::textInput('keyword', $keyword, [
-                                'placeholder' => '姓名/电话/地址',
+                                'placeholder' => '姓名/电话',
                                 'class' => 'form-control'
                             ])?>
                             <?= Html::tag('span', '<button class="btn btn-white"><i class="fa fa-search"></i> 搜索</button>', ['class' => 'input-group-btn'])?>
@@ -97,9 +94,9 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
                         <th>#</th>
                         <th>姓名</th>
                         <th>电话</th>
-<!--                        <th>省</th>-->
-<!--                        <th>市</th>-->
-<!--                        <th>区</th>-->
+                        <th>省</th>
+                        <th>市</th>
+                        <th>区</th>
                         <th>地址</th>
                         <th>来源</th>
                         <th>注册时间</th>
@@ -112,6 +109,9 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
                             <td><?= $model->id ?></td>
                             <td><?= $model->name ?></td>
                             <td><?= \common\helpers\StringHelper::hideStr($model->mobile,3) ?></td>
+                            <td><?= $model->province_id ?></td>
+                            <td><?= $model->city_id ?></td>
+                            <td><?= $model->area_id ?></td>
                             <td><?= $model->address ?></td>
                             <td><?= RegisterUser::$source[$model->source]; ?></td>
                             <td><?= Yii::$app->formatter->asDatetime($model->created_at) ?></td>

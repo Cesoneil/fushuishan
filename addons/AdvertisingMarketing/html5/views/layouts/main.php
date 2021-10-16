@@ -25,6 +25,7 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 <?= $content ?>
 <?php $this->endBody() ?>
+<?= $this->render('@html5/views/layouts/_footer') ?>
 </body>
 </html>
 <?php $this->endPage() ?>

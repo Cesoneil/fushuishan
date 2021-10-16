@@ -46,7 +46,7 @@ class RegisterUserController extends BaseController
             ->where(['merchant_id' => $this->getMerchantId(),'register_form_id' => $register_form_id])
             ->andFilterWhere(['like', 'name', $keyword])
             ->orFilterWhere(['like', 'mobile', $keyword])
-            ->orFilterWhere(['like', 'address', $keyword])
+            //->orFilterWhere(['like', 'address', $keyword])
             ->andFilterWhere(['source' => $type])
             ->andFilterWhere(['between', 'created_at', strtotime($from_date), strtotime($to_date)]);
 
@@ -60,12 +60,12 @@ class RegisterUserController extends BaseController
             ->limit($pages->limit)
             ->all();
 
-//        $province=new ProvincesService();
-//        foreach($models as $model){
-//            $model->province_id = $province->getName($model->province_id);
-//            $model->city_id = $province->getName($model->city_id);
-//            $model->area_id = $province->getName($model->area_id);
-//        }
+        $province=new ProvincesService();
+        foreach($models as $model){
+            $model->province_id = $province->getName($model->province_id);
+            $model->city_id = $province->getName($model->city_id);
+            $model->area_id = $province->getName($model->area_id);
+        }
 
         // 百度推广
         $baidu_count = $baidu_data
