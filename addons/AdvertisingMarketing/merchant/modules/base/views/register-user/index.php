@@ -26,8 +26,8 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
 ?>
 <style>
     .register_title{
-        max-width: 800px;
-        overflow: hidden;
+        max-width: 600px;
+        overflow: scroll;
     }
 </style>
 
