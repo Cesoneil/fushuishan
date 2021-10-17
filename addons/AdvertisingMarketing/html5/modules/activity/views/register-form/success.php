@@ -29,13 +29,13 @@ box-shadow: 5px 5px 5px #888888; ">
                 <div>长按保存图片 -> 打开微信扫码 </div>或 搜索 '优瑞商城' 关注了解订单动态～～
             </div>
             <div style="margin-top: 30px;">
-                <button class="btn" style="padding: 10px 40px;">再来一单</button>
-                <button class="btn" style="padding: 10px 40px; margin-left: 20px;">我的订单</button>
+                <button class="btn" style="padding: 10px 40px; border: 1px solid #0f0f0f;">再来一单</button>
+                <button class="btn" style="padding: 10px 40px; border: 1px solid #0f0f0f;margin-left: 20px;">我的订单</button>
             </div>
         </div>
     </div>
-    <div>
-        <h5>➕关注即可</h5>
+    <div style="padding-bottom: 100px;">
+        <h5>关注即可</h5>
         <p>1、随时查询订单详情、物流信息</p>
         <p>2、订单动态消息及时通知</p>
         <p>3、在线咨询商家、客服人员</p>
