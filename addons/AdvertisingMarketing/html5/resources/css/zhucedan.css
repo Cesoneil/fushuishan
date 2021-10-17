@@ -77,7 +77,7 @@ label {
 }
 
 .checkbox {
-    margin-top: -20px;
+    margin-top: -10px;
     /*margin-bottom: 0px;*/
 }
 
@@ -213,7 +213,7 @@ label {
     display: inline;
 }
 
- .help-block{
+.help-block{
     display: inline-block
 }
 
