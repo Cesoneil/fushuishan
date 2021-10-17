@@ -70,22 +70,33 @@ class RegisterForm extends RegisterUser
      */
     public function registerSave($request)
     {
+        //这里需要对访问配置进行加法操作
         $post = $request->post();
+        $register_config_id = $request->get('register_config_id', '');
+        $register_config = RegisterFormConfig::findOne(['id' => $register_config_id]);
         if (!empty($post)) {
             $post['RegisterUser'] = $post['RegisterForm'];
-            $register_config_id = $request->get('register_config_id', '');
             $post['RegisterUser']['source'] = $request->get('source', '');
             $post['RegisterUser']['register_form_id'] = $register_config_id;
-            $post['RegisterUser']['merchant_id'] = RegisterFormConfig::findOne(['id' => $register_config_id])['merchant_id'];
+            $post['RegisterUser']['merchant_id'] = $register_config['merchant_id'];
             unset($post['RegisterForm'], $post['RegisterUser']['autoMobile']);
         }
-        $model = RegisterUser::findOne(['mobile' => $post['RegisterUser']['mobile']]);
-        if(empty($model))$model = new RegisterUser();
-        
-        if ($model->load($post) && $model->validate()) {
-            return $model->save() ? $model->id : false;
+        $transaction = Yii::$app->db->beginTransaction();//开启事物
+        try {
+            $model = RegisterUser::findOne(['mobile' => $post['RegisterUser']['mobile']]);
+            if (empty($model)) {
+                $model = new RegisterUser();
+                $register_config->register_number = $register_config->register_number++;
+                $register_config->save();
+            }
+            if ($model->load($post) && $model->validate()&&$model->save()) {
+                $transaction->commit();
+                return $model->id ?? false;
+            }
+        } catch (\Exception $e) {
+            $transaction->rollBack();
+            return false;
         }
-        return false;
     }
 }
 

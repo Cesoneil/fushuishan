@@ -2,6 +2,7 @@
 
 namespace services\backend;
 
+use common\helpers\ToolsHelper;
 use Yii;
 use common\enums\StatusEnum;
 use common\helpers\ArrayHelper;
@@ -24,7 +25,7 @@ class MemberService extends Service
     {
         $member->visit_count += 1;
         $member->last_time = time();
-        $member->last_ip = Yii::$app->request->getUserIP();
+        $member->last_ip = Yii::$app->request->getUserIP(); //ToolsHelper::ip();
         $member->save();
     }
 

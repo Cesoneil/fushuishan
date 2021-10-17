@@ -37,8 +37,6 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
             <div class="box-header">
                 <h3 class="box-title register_title"><?= '【注册信息列表】———' . $popularize_title; ?></h3>
                 <div class="box-tools">
-                    百度 <strong class="text-danger"><?= $baidu_count ?></strong> 条 ;
-                    UC <strong class="text-danger"><?= $uc_count ?></strong> 条 ;
                     共 <strong class="text-danger"><?= $pages->totalCount ?></strong> 条 ;
                 </div>
             </div>
@@ -78,7 +76,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
                     <div class="col-sm-5">
                         <div class="input-group m-b">
                             <?= Html::textInput('keyword', $keyword, [
-                                'placeholder' => '姓名/电话',
+                                'placeholder' => '姓名 / 电话 / 来源',
                                 'class' => 'form-control'
                             ])?>
                             <?= Html::tag('span', '<button class="btn btn-white"><i class="fa fa-search"></i> 搜索</button>', ['class' => 'input-group-btn'])?>
@@ -118,7 +116,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
                             <td><?= $model->city_id ?></td>
                             <td><?= $model->area_id ?></td>
                             <td><?= $model->address ?></td>
-                            <td><?= $model->source; ?></td>
+                            <td><?= $model->source ?></td>
                             <td><?= Yii::$app->formatter->asDatetime($model->created_at) ?></td>
                             <td><?= Html::delete(['delete','id' => $model->id]); ?></td>
                         </tr>

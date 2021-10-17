@@ -8,7 +8,9 @@ use addons\AdvertisingMarketing\common\models\activity\RegisterUser;
 use addons\AdvertisingMarketing\html5\controllers\BaseController;
 use addons\AdvertisingMarketing\html5\modules\activity\forms\RegisterForm;
 use common\enums\StatusEnum;
+use common\helpers\ArrayHelper;
 use common\helpers\StringHelper;
+use common\helpers\ToolsHelper;
 use services\common\ProvincesService;
 use yii\bootstrap\Carousel;
 use Yii;
@@ -39,8 +41,30 @@ class RegisterFormController extends BaseController
         //获取活动配置信息
         $request = Yii::$app->request;
         $register_form_id = $request->get('register_config_id', '');
-        $source = $request->get('source') ?? 2; //默认为UC浏览器
-        $register_config = RegisterFormConfig::find()->where(['id' => $register_form_id,'status'=>StatusEnum::ENABLED])->one();
+        $source = $request->get('source', '')?? ToolsHelper::getBrowser();//获取浏览器agent的值
+
+        $register_config = RegisterFormConfig::find()->where(['id' => $register_form_id, 'status' => StatusEnum::ENABLED])->one();
+        if ($register_config) {
+            //表单内容
+            $model = new RegisterForm();
+            $cache = Yii::$app->session->get('users');
+            $ip = ToolsHelper::ip();    // echo  Yii::$app->request->userIP;无效
+            if (!empty($cache)) {
+                $model = $model->getRegisterUserInfo($cache['id']);
+                $model->name = StringHelper::hideStr($model->name, 1, 1);
+                $model->mobile = StringHelper::hideStr($model->mobile, 3);
+            } else {
+                $ips = Yii::$app->cache->get('visit_users_ip');
+                if (empty($ips)|| !isset($ips[$register_form_id])||!in_array($ip, $ips[$register_form_id]) ) {
+                    $register_config->click_number = $register_config->click_number++;
+                    if($register_config->save()){                   //增加有效访问量
+                        array_push($ips[$register_form_id],$ip);    //把用户ip放入缓存
+                        Yii::$app->cache->set('visit_users_ip',$ips);//放入缓存中
+                    }
+                }
+            }
+        }
+
         $register_config->header_img = explode(',', $register_config->header_img);
         $register_config->footer_img = explode(',', $register_config->footer_img);
         $register_number = $register_config->register_number;
@@ -60,6 +84,8 @@ class RegisterFormController extends BaseController
         $header_ui = $range ? $result : Carousel::widget(['items' => $result, 'controls' => false,]);  //轮播组件
         //头部图片展示方式
 
+        //这里需要获取用户的数量和 配置访问数需要做统计，ip地址需要分析，
+
         //设置领取展示动态
         $users_info = '';
         $header_dynamic = $register_config->header_dynamic;
@@ -78,15 +104,7 @@ class RegisterFormController extends BaseController
         }
         //设置领取展示动态
 
-        //表单内容
-        $model = new RegisterForm();
-        $cache = Yii::$app->session->get('users');
-        if (!empty($cache)) {
-            $model = $model->getRegisterUserInfo($cache['id']);
-            $model->name = StringHelper::hideStr($model->name, 1, 1);
-            $model->mobile = StringHelper::hideStr($model->mobile, 3);
-        }
-//        p($model);exit;   //缓存显示有一点点问问题
+        //if cache为空或者缓存的ip和浏览器信息为空为有效值，并设置缓存
         return $this->render($this->action->id, [
             'model' => $model,
             'register_config' => $register_config,
@@ -119,10 +137,12 @@ class RegisterFormController extends BaseController
     }
 
 
-
-
+    /**
+     * @return string
+     */
     public function actionSuccess()
     {
-        return $this->render($this->action->id,[]);
+        //获取个人的ID信息内容，和商家的二维码图片//等待调整
+        return $this->render($this->action->id);
     }
 }

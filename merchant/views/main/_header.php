@@ -62,7 +62,7 @@ use merchant\widgets\notify\Notify;
                             <img class="img-circle head_portrait" src="<?= ImageHelper::defaultHeaderPortrait($manager->head_portrait); ?>"/>
                             <p>
                                 <?= $manager->username; ?>
-                                <small><?= Yii::$app->request->userIP; ?></small>
+                                <small><?= \common\helpers\ToolsHelper::ip()//Yii::$app->request->userIP; ?></small>
                             </p>
                         </li>
                         <!-- Menu Body -->

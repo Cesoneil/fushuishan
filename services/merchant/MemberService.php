@@ -2,6 +2,7 @@
 
 namespace services\merchant;
 
+use common\helpers\ToolsHelper;
 use Yii;
 use common\enums\StatusEnum;
 use common\models\merchant\Member;
@@ -88,7 +89,7 @@ class MemberService extends Service
         // 记录访问次数
         $member->visit_count += 1;
         $member->last_time = time();
-        $member->last_ip = Yii::$app->request->getUserIP();
+        $member->last_ip = Yii::$app->request->getUserIP(); //ToolsHelper::ip();//
         $member->save();
     }
 }

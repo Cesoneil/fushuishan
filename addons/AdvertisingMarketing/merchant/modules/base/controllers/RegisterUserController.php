@@ -35,7 +35,7 @@ class RegisterUserController extends BaseController
     public function actionIndex()
     {
         $request = Yii::$app->request;
-        //$type = $request->get('source', '');
+        $type = $request->get('source', '');
         $keyword = $request->get('keyword', '');
         $register_form_id = $request->get('register_form_id', '');
         $from_date = $request->get('from_date', date('Y-m-d H:i', strtotime("-7 day")));
@@ -80,7 +80,7 @@ class RegisterUserController extends BaseController
         return $this->render('index', [
             'models' => $models,
             'pages' => $pages,
-//            'source' => $type,
+            'source' => $type,
             'register_form_id' =>$register_form_id,
 //            'baidu_count' => $baidu_count,
 //            'uc_count' => $uc_count,

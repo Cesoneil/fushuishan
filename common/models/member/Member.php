@@ -3,6 +3,7 @@
 namespace common\models\member;
 
 use common\helpers\StringHelper;
+use common\helpers\ToolsHelper;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\db\ActiveQuery;
@@ -175,7 +176,7 @@ class Member extends User
     public function beforeSave($insert)
     {
         if ($this->isNewRecord) {
-            $this->last_ip = Yii::$app->request->getUserIP();
+            $this->last_ip = Yii::$app->request->getUserIP();//ToolsHelper::ip();//
             $this->last_time = time();
             $this->auth_key = Yii::$app->security->generateRandomString();
         }
