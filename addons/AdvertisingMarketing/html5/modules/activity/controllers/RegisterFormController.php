@@ -43,9 +43,9 @@ class RegisterFormController extends BaseController
         $register_form_id = $request->get('register_config_id', '');
         $source = $request->get('source', '')?$request->get('source', ''): ToolsHelper::getBrowser();//获取浏览器agent的值
         $register_config = RegisterFormConfig::find()->where(['id' => $register_form_id, 'status' => StatusEnum::ENABLED])->one();
+        //表单内容
+        $model = new RegisterForm();
         if ($register_config) {
-            //表单内容
-            $model = new RegisterForm();
             $cache = Yii::$app->session->get('users');
             $ip = ToolsHelper::ip();
             if (!empty($cache)) {
@@ -54,6 +54,7 @@ class RegisterFormController extends BaseController
                 $model->mobile = StringHelper::hideStr($model->mobile, 3);
             } else {
                 $ips = Yii::$app->cache->get('visit_users_ip');
+                p($ips);
                 if (empty($ips) || !isset($ips[$register_form_id]) || !in_array($ip, $ips[$register_form_id])) {
                     $register_config->click_number = $register_config->click_number+1;
                     if ($register_config->save()) {                   //增加有效访问量
@@ -83,8 +84,6 @@ class RegisterFormController extends BaseController
         $header_ui = $range ? $result : Carousel::widget(['items' => $result, 'controls' => false,]);  //轮播组件
         //头部图片展示方式
 
-        //这里需要获取用户的数量和 配置访问数需要做统计，ip地址需要分析，
-
         //设置领取展示动态
         $users_info = '';
         $header_dynamic = $register_config->header_dynamic;
@@ -103,7 +102,6 @@ class RegisterFormController extends BaseController
         }
         //设置领取展示动态
 
-        //if cache为空或者缓存的ip和浏览器信息为空为有效值，并设置缓存
         return $this->render($this->action->id, [
             'model' => $model,
             'register_config' => $register_config,
