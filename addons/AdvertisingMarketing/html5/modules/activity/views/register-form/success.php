@@ -10,7 +10,7 @@ $this->title = '下单成功';
 
 <div class="position-ref full-height">
     <div class="content" style="position: relative; border-bottom:1px dashed #f4f4f4" >
-        <div style="z-index:1;background-image: linear-gradient(90deg, #ff9233, #fe5136 31%, #fd2245 64%, #fd227a);color: #fff;padding-top: 80px; font-size: 16px; padding-bottom: 80px;">
+        <div style="z-index:1;background-image: linear-gradient(90deg, #ff9233, #fe5136 31%, #fd2245 64%, #fd227a);color: #fff;padding-top: 70px; font-size: 16px; padding-bottom: 80px;">
             <div  style="width: 80px;height: 80px;border-radius: 80px;
             background: #fff;color: red;margin: 0 auto;font-size: 42px; line-height: 90px; margin-bottom: 15px;">
                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
@@ -24,7 +24,7 @@ box-shadow: 5px 5px 5px #888888; ">
                        src="<?php echo \yii\helpers\Url::to('@web/resources/img/WeChat.png'); ?>"/></div>
         </div>
 
-        <div style="position: relative; background: #fff; padding-bottom:150px;border-radius: 20px;margin-top: -20px; z-index: 2">
+        <div style="position: relative; background: #fff; padding-bottom:100px;border-radius: 20px;margin-top: -20px; z-index: 2">
             <div style="font-size: 12px; margin:0 auto; width: 250px;position: relative;padding: 100px 20px 0 0;">
                 <div>长按保存图片 -> 打开微信扫码 </div>或 搜索 '优瑞商城' 关注了解订单动态～～
             </div>
