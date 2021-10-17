@@ -228,11 +228,11 @@ label {
 }
 
 .register-modal {
-    margin-top: 100px;
+    margin-top: 60px;
 }
 
-.register-modal > .modal-body {
-    height: 300px;
+.register-modal>.modal-body {
+    height: 200px;
     overflow: auto
 }
 
