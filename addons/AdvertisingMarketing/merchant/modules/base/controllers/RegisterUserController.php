@@ -35,7 +35,7 @@ class RegisterUserController extends BaseController
     public function actionIndex()
     {
         $request = Yii::$app->request;
-        $type = $request->get('source', '');
+        //$type = $request->get('source', '');
         $keyword = $request->get('keyword', '');
         $register_form_id = $request->get('register_form_id', '');
         $from_date = $request->get('from_date', date('Y-m-d H:i', strtotime("-7 day")));
@@ -47,11 +47,11 @@ class RegisterUserController extends BaseController
             ->andFilterWhere(['like', 'name', $keyword])
             ->orFilterWhere(['like', 'mobile', $keyword])
             //->orFilterWhere(['like', 'address', $keyword])
-            ->andFilterWhere(['source' => $type])
+            ->andFilterWhere(['like', 'source', $keyword])
             ->andFilterWhere(['between', 'created_at', strtotime($from_date), strtotime($to_date)]);
 
-        $baidu_data = clone $data;
-        $uc_data = clone $data;
+//        $baidu_data = clone $data;
+//        $uc_data = clone $data;
 
 
         $pages = new Pagination(['totalCount' => $data->count(), 'pageSize' => $this->pageSize]);
@@ -67,23 +67,23 @@ class RegisterUserController extends BaseController
             $model->area_id = $province->getName($model->area_id);
         }
 
-        // 百度推广
-        $baidu_count = $baidu_data
-            ->andWhere(['source' => RegisterUser::BAIDU])
-            ->count();
-        // UC推广
-        $uc_count = $uc_data
-            ->andWhere(['source' => RegisterUser::UC_AGENT])
-            ->count();
+//        // 百度推广
+//        $baidu_count = $baidu_data
+//            ->andWhere(['source' => RegisterUser::BAIDU])
+//            ->count();
+//        // UC推广
+//        $uc_count = $uc_data
+//            ->andWhere(['source' => RegisterUser::UC_AGENT])
+//            ->count();
 
 
         return $this->render('index', [
             'models' => $models,
             'pages' => $pages,
-            'source' => $type,
+//            'source' => $type,
             'register_form_id' =>$register_form_id,
-            'baidu_count' => $baidu_count,
-            'uc_count' => $uc_count,
+//            'baidu_count' => $baidu_count,
+//            'uc_count' => $uc_count,
             'popularize_title' => $popularize_title,
             'keyword' => $keyword,
             'from_date' => $from_date,
@@ -107,10 +107,9 @@ class RegisterUserController extends BaseController
         $dataList = RegisterUser::find()
             ->where(['between', 'created_at', strtotime($from_date), strtotime($to_date)])
             ->andWhere(['merchant_id' => $this->getMerchantId(),'register_form_id' => $register_form_id])
-            ->andFilterWhere(['source' => $request->get('source')])
             ->andFilterWhere(['like', 'name', $keyword])
             ->orFilterWhere(['like', 'mobile', $keyword])
-            ->orFilterWhere(['like', 'address', $keyword])
+            ->orFilterWhere(['like', 'source', $keyword])
             ->orderBy('created_at desc')
             ->asArray()
             ->all();
@@ -128,7 +127,7 @@ class RegisterUserController extends BaseController
             ['市', 'city_id'],
             ['区', 'area_id'],
             ['详细地址', 'address'],
-            ['来源', 'source', 'selectd', ['' => '全部', '1' => '百度推广', '2' => 'UC浏览器']],
+            ['来源', 'source'],   //, 'selectd', ['' => '全部', '1' => '百度推广', '2' => 'UC浏览器']
             ['创建时间', 'created_at', 'date', 'Y-m-d H:i:s'],
         ];
 

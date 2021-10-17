@@ -96,10 +96,10 @@ $this->title = '下单成功';
                 或 搜索 '优瑞商城' 关注了解订单动态～～
             </div>
             <div class="click_button">
-                <button class="btn" onclick="history.go(-1)" style="">
+                <button class="btn" onclick="history.go(-1)">
                     再来一单
                 </button>
-                <button class="btn btn-order">我的订单
+                <button class="btn btn-order" disabled>我的订单
                 </button>
             </div>
         </div>

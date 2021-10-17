@@ -81,6 +81,7 @@ class RegisterForm extends RegisterUser
         }
         $model = RegisterUser::findOne(['mobile' => $post['RegisterUser']['mobile']]);
         if(empty($model))$model = new RegisterUser();
+        
         if ($model->load($post) && $model->validate()) {
             return $model->save() ? $model->id : false;
         }

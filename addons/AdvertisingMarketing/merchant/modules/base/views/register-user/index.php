@@ -9,8 +9,8 @@
 use common\helpers\Url;
 use yii\widgets\ActiveForm;
 use kartik\daterange\DateRangePicker;
-use yii\helpers\ArrayHelper;
-use addons\AdvertisingMarketing\common\models\activity\RegisterUser;
+//use yii\helpers\ArrayHelper;
+//use addons\AdvertisingMarketing\common\models\activity\RegisterUser;
 use common\helpers\Html;
 use yii\widgets\LinkPager;
 
@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
                         'action' => Url::to(['index']),
                         'method' => 'get'
                     ]); ?>
-                    <div class="col-sm-5">
+                    <div class="col-sm-6">
                         <?= Html::hiddenInput('register_form_id', $register_form_id) ?>
                         <?= Html::hiddenInput('popularize_title', $popularize_title) ?>
                         <div class="input-group drp-container">
@@ -72,10 +72,10 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
                             ]) . $addon;?>
                         </div>
                     </div>
-                    <div class="col-sm-2">
-                        <?= Html::dropDownList('source', $source, ArrayHelper::merge(['' => '全部'], RegisterUser::$source), ['class'=>'form-control']);?>
-                    </div>
-                    <div class="col-sm-4">
+<!--                    <div class="col-sm-2">-->
+<!--                     = Html::dropDownList('source', $source, ArrayHelper::merge(['' => '全部'], RegisterUser::$source), ['class'=>'form-control']);
+<!--                    </div>-->
+                    <div class="col-sm-5">
                         <div class="input-group m-b">
                             <?= Html::textInput('keyword', $keyword, [
                                 'placeholder' => '姓名/电话',
@@ -118,7 +118,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
                             <td><?= $model->city_id ?></td>
                             <td><?= $model->area_id ?></td>
                             <td><?= $model->address ?></td>
-                            <td><?= RegisterUser::$source[$model->source]; ?></td>
+                            <td><?= $model->source; ?></td>
                             <td><?= Yii::$app->formatter->asDatetime($model->created_at) ?></td>
                             <td><?= Html::delete(['delete','id' => $model->id]); ?></td>
                         </tr>

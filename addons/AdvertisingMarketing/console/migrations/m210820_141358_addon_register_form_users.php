@@ -27,7 +27,7 @@ class m210820_141358_addon_register_form_users extends Migration
             'area_id' => "int(10) NOT NULL DEFAULT '0' COMMENT '区'",
             'address' => "varchar(100) NOT NULL DEFAULT '' COMMENT '地址'",
             'source' => "varchar(16) NULL DEFAULT '' COMMENT '来源'",
-            'auto_mobile' => "tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '自动输入历史手机号[0:不同意;1:同意]'",
+//            'auto_mobile' => "tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '自动输入历史手机号[0:不同意;1:同意]'",
             'created_at' => "int(10) NULL DEFAULT '0' COMMENT '创建时间'",
             'updated_at' => "int(10) unsigned NULL DEFAULT '0' COMMENT '修改时间'",
             'PRIMARY KEY (`id`)'
@@ -35,6 +35,7 @@ class m210820_141358_addon_register_form_users extends Migration
 
         /* 索引设置 */
         $this->createIndex('merchant_id','{{%addon_register_form_users}}','merchant_id',0);
+        $this->createIndex('mobile','{{%addon_register_form_users}}','mobile',0);
         /* 表数据 */
 
         /* 设置外键约束 */

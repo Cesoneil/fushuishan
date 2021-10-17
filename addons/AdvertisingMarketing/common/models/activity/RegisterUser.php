@@ -34,16 +34,16 @@ class RegisterUser extends BaseModel
 
     //use MerchantBehavior;
 
-    const BAIDU = 1;
-    const UC_AGENT = 2;
-
-    /**
-     * @var array
-     */
-    public static $source = [
-        self::BAIDU => '百度推广',
-        self::UC_AGENT => 'UC浏览器',
-    ];
+//    const BAIDU = 1;
+//    const UC_AGENT = 2;
+//
+//    /**
+//     * @var array
+//     */
+//    public static $source = [
+//        self::BAIDU => '百度推广',
+//        self::UC_AGENT => 'UC浏览器',
+//    ];
 
     /**
      * {@inheritdoc}
