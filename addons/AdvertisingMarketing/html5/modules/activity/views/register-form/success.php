@@ -63,17 +63,17 @@ $this->title = '下单成功';
         position: relative;
         padding: 100px 20px 0 0;
 
-        .click_button {
-            margin-top: 30px;
-        }
+    }
+    .click_button {
+        margin-top: 30px;
+    }
 
-        button {
-            padding: 10px 40px;
-            border: 1px solid #0f0f0f;
-        }
-        .btn_order{
-            margin-left: 20px;
-        }
+    .click_button>button {
+        padding: 10px 40px;
+        border: 1px solid #0f0f0f;
+    }
+    .click_button>.btn-order{
+        margin-left: 20px;
     }
 
 </style>
