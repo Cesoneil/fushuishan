@@ -16,7 +16,8 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
 ?>
 <style>
     .table_tr{
-        max-width: 50px;
+        max-width: 150px;
+        overflow: scroll;
     }
 </style>
 
