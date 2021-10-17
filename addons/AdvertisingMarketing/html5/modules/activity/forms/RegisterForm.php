@@ -86,7 +86,7 @@ class RegisterForm extends RegisterUser
             $model = RegisterUser::findOne(['mobile' => $post['RegisterUser']['mobile']]);
             if (empty($model)) {
                 $model = new RegisterUser();
-                $register_config->register_number = $register_config->register_number++;
+                $register_config->register_number = $register_config->register_number+1;
                 $register_config->save();
             }
             if ($model->load($post) && $model->validate()&&$model->save()) {
