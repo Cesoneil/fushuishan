@@ -24,13 +24,18 @@ $this->title = '注册信息列表';
 $this->params['breadcrumbs'][] = ['label' => $this->title];
 
 ?>
-
+<style>
+    .register_title{
+        max-width: 300px;
+        overflow: hidden;
+    }
+</style>
 
 <div class="row">
     <div class="col-sm-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title"><?= '【注册信息列表】———' . $popularize_title; ?></h3>
+                <h3 class="box-title register_title"><?= '【注册信息列表】———' . $popularize_title; ?></h3>
                 <div class="box-tools">
                     百度 <strong class="text-danger"><?= $baidu_count ?></strong> 条 ;
                     UC <strong class="text-danger"><?= $uc_count ?></strong> 条 ;
