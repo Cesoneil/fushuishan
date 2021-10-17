@@ -14,6 +14,11 @@ use common\helpers\ImageHelper;
 $this->title = '注册单推广';
 $this->params['breadcrumbs'][] = ['label' => $this->title];
 ?>
+<style>
+    .table_tr{
+        max-width: 50px;
+    }
+</style>
 
 <div class="row">
     <div class="col-sm-12">
@@ -51,7 +56,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
                         [
                             'label' => '推广标题',
                             'attribute' => 'popularize_title',
-                            'headerOptions' => ['class' => 'col-md-1', 'overflow' => 'hidden'],
+                            'headerOptions' => ['class' => 'col-md-1 table_tr'],
                         ],
                         [
                             'label' => '推广图',
