@@ -39,7 +39,7 @@ $this->title = '下单成功';
         width: 120px;
         position: absolute;
         left: 50%;
-        top: 50%;
+        top: 53%;
         transform: translate(-50%, -50%);
         z-index: 3;
         background: #fff;
