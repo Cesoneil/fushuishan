@@ -2,14 +2,17 @@
 namespace addons\AdvertisingMarketing\html5\modules\activity\controllers;
 
 use addons\AdvertisingMarketing\common\enums\RegisterFormDynamic;
-use \addons\AdvertisingMarketing\common\enums\RegisterFormModeEnum;
+use addons\AdvertisingMarketing\common\enums\RegisterFormModeEnum;
 use addons\AdvertisingMarketing\common\models\activity\RegisterFormConfig;
 use addons\AdvertisingMarketing\common\models\activity\RegisterUser;
 use addons\AdvertisingMarketing\html5\controllers\BaseController;
+use addons\AdvertisingMarketing\html5\modules\activity\forms\RegisterForm;
+use common\enums\StatusEnum;
 use common\helpers\StringHelper;
 use services\common\ProvincesService;
-use \yii\bootstrap\Carousel;
+use yii\bootstrap\Carousel;
 use Yii;
+use yii\web\NotFoundHttpException;
 
 /**
  * 活动基础类
@@ -34,9 +37,10 @@ class RegisterFormController extends BaseController
     public function actionIndex()
     {
         //获取活动配置信息
-        $request=Yii::$app->request;
+        $request = Yii::$app->request;
         $register_form_id = $request->get('register_config_id', '');
-        $register_config = RegisterFormConfig::find()->where(['id' => $register_form_id])->one();
+        $source = $request->get('source', 2);
+        $register_config = RegisterFormConfig::find()->where(['id' => $register_form_id,'status'=>StatusEnum::ENABLED])->one();
         $register_config->header_img = explode(',', $register_config->header_img);
         $register_config->footer_img = explode(',', $register_config->footer_img);
         $register_number = $register_config->register_number;
@@ -75,51 +79,51 @@ class RegisterFormController extends BaseController
         //设置领取展示动态
 
         //表单内容
-//        $cache = Yii::$app->cache;
-        $model = RegisterUser::findOne(['id'=>1]);
-        if(!empty($model->name)) $model->name = StringHelper::hideStr($model->name, 1, 1);
-        if(!empty($model->mobile)) $model->mobile = StringHelper::hideStr($model->mobile, 3);
-
+        $model = new RegisterForm();
+        $cache = Yii::$app->cache->get('users');
+        if (!empty($cache)) {
+            $model = $model->getRegisterUserInfo($cache['id']);
+            $model->name = StringHelper::hideStr($model->name, 1, 1);
+            $model->mobile = StringHelper::hideStr($model->mobile, 3);
+        }
+//        p($model);exit;   //缓存显示有一点点问问题
         return $this->render($this->action->id, [
             'model' => $model,
             'register_config' => $register_config,
             'header_ui' => $header_ui,
-            'users_info' => $users_info
+            'users_info' => $users_info,
+            'source' => $source
         ]);
     }
 
 
     /**
-     * 编辑/创建
-     *
-     * @return mixed|string|\yii\web\Response
-     * @throws \yii\base\Exception
-     * @throws \yii\base\ExitException
-     * @throws \yii\base\InvalidConfigException
+     * ajax提交信息跳转
+     * @return mixed|\yii\web\Response
+     * @throws NotFoundHttpException
      */
-    public function actionAjaxEdit()
+    public function actionAjaxRegister()
     {
-        $id = Yii::$app->request->get('id');
-        $model = $this->findModel($id);
-        $model->merchant_id = !empty($this->getMerchantId()) ? $this->getMerchantId() : 0;
-        $model->scenario = 'backendCreate';
-        $modelInfo = clone $model;
-
-        // ajax 校验
-        $this->activeFormValidate($model);
-        if ($model->load(Yii::$app->request->post())) {
-            // 验证密码
-            if ($modelInfo['password_hash'] != $model->password_hash) {
-                $model->password_hash = Yii::$app->security->generatePasswordHash($model->password_hash);
+        $request = Yii::$app->request;
+        $model = new RegisterForm();
+        if ($model->load($request->post()) && $model->validate()) {
+            $result = $model->registerSave($request);
+            if ($result) {
+                Yii::$app->cache->set('users', ['id' => $result]);
+                Yii::$app->getSession()->setFlash('success', '下单成功');
+                return $this->redirect(['success']);
+            } else {
+                throw new NotFoundHttpException($this->getError($model));
             }
-
-            return $model->save()
-                ? $this->redirect(['index'])
-                : $this->message($this->getError($model), $this->redirect(['index']), 'error');
         }
+        return $this->message($this->getError($model), $this->redirect(Yii::$app->request->referrer), 'error');
+    }
 
-        return $this->renderAjax($this->action->id, [
-            'model' => $model,
-        ]);
+
+
+
+    public function actionSuccess()
+    {
+        return $this->render($this->action->id,[]);
     }
 }

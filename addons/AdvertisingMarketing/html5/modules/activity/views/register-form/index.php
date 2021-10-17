@@ -1,7 +1,8 @@
 <?php
 use yii\bootstrap\ActiveForm;
 use common\helpers\Url;
-use \addons\AdvertisingMarketing\common\enums\RegisterFormDynamic;
+use addons\AdvertisingMarketing\common\enums\RegisterFormDynamic;
+use common\helpers\Html;
 
 //* @var $form yii\bootstrap\ActiveForm */
 $this->title = $register_config->title;
@@ -11,10 +12,10 @@ $dynamic = $register_config->header_dynamic;
 ?>
 <div class="position-ref">
     <div class="content">
-        <!--        * @property int $header_img_show_mode 头部图片展示方式[1:排列展示;2:轮播展示]-->
+        <!--头部图片展示方式-->
         <a href="javascript:viod(0)"><?= $header_ui ?></a>
-        <!--        * @property int $header_dynamic 头部动态[0:不展示；1:只展示动态;2:只展示人数;3:全部展示]-->
         <div id="form">
+            <!--  头部动态  -->
             <div class="box-header" <?php if ($dynamic == RegisterFormDynamic::CLOSE) {
                 echo 'style="display:none"';
             } ?>>
@@ -24,16 +25,17 @@ $dynamic = $register_config->header_dynamic;
                     <div class="rotate"><?= $users_info ?></div>
                 </div>
             </div>
-            <div class="header-right" <?php if ($dynamic == RegisterFormDynamic::CLOSE||$dynamic == RegisterFormDynamic::DYNAMIC) {
+            <!--  头部领取人数  -->
+            <div class="header-right" <?php if ($dynamic == RegisterFormDynamic::CLOSE || $dynamic == RegisterFormDynamic::DYNAMIC) {
                 echo 'style="display:none"';
             } ?>>
                 <i class="fa fa-xxx">🚩</i>
                 <span>已有<span class="total-human focus-info"><?= $register_config->register_number ?></span>人领取</span>
             </div>
+            <!--  表单提交部分  -->
             <?php $form = ActiveForm::begin([
                 'id' => $model->formName(),
-                'enableAjaxValidation' => true,
-                'validationUrl' => Url::to(['ajax-edit', 'id' => $model['id']]),
+                'action' => Url::to(['ajax-register', 'register_config_id' => $register_config->id, 'source' => $source]),
                 'fieldConfig' => [
                     'template' => "<div class='form-lable'>{label}{hint}</div><div class='form-content'>{input}{error}</div>",
                 ],]); ?>
@@ -49,7 +51,12 @@ $dynamic = $register_config->header_dynamic;
                     'areaName' => 'area_id',// 区字段名
                 ]); ?>
                 <?= $form->field($model, 'address')->textarea()->hint('<span class="focus-info">*</span>') ?>
-                <?= $form->field($model, 'auto_mobile')->checkbox()->hint('<span class="agree auto-mobile"><span class="info-state">《个人信息授权与保护声明》</span></span>') ?>
+                <?= $form->field($model, 'autoMobile')->checkbox()->hint('
+                    <span class="agree auto-mobile">
+                        <span class="info-state"> 
+                            <a href="javascript:void(0);" class="modalAgree"  data-toggle="modal" data-target="#ajaxModalLgForAgreement">《个人信息授权与保护声明》</a> 
+                        </span>
+                    </span>') ?>
                 <div class="box-footer text-center">
                     <button class="btn btn-submit btn-primary ziti" type="submit">立即领取</button>
                 </div>
@@ -64,8 +71,10 @@ $dynamic = $register_config->header_dynamic;
             } ?>
         </a>
     </div>
-    <!--    这里提供是否可以展示或者不展示处理 ,如果不展示需要把.content对底部的padding的50像素取消-->
-<!--    <div class="agreement agree">提交即视为您已阅读并同意<span class="info-state">《个人信息保护声明》</span></div>-->
+    <a href="#form">
+        <div class="scorll"><div class="ziti">点击免费领取</div></div>
+    </a>
+    <!--    <div class="agreement agree">提交即视为您已阅读并同意<span class="info-state">《个人信息保护声明》</span></div>-->
     <div class="call" style="display: <?= empty($register_config->support_phone) ? 'none' : 'block' ?>;">
         <a href="tel:<?= $register_config->support_phone ?>">
             <img class="user-image"
@@ -73,12 +82,32 @@ $dynamic = $register_config->header_dynamic;
             <!--            <span class="glyphicon glyphicon-earphone" aria-hidden="true" style="color:red;font-size: 36px;padding: 5px"></span>-->
         </a>
     </div>
-    <!--    共有7个弹窗，1个运营商服务条款 1个手机验证码，1个提交成功弹窗，1个商户用的信息申明弹窗  ，再加一个异常弹窗-->
+    <!--    共有7个弹窗 1个手机验证码，1个提交成功弹窗 -->
+</div>
+
+
+<div class="modal fade register-modal" id="ajaxModalLgForAgreement" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                            class="sr-only">关闭</span></button>
+                <h5 class="modal-title">《个人信息授权与保护声明》</h5>
+            </div>
+            <div class="modal-body">
+                <?=  $register_config->agreement ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">同意</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 
 <script>
     $(function () {
+        //轮播展示
         var len = $('.rotate').children().length - 1;
         count = Math.round(Math.random() * (len));
         $(".itemq").eq(count).fadeIn();
@@ -98,6 +127,22 @@ $dynamic = $register_config->header_dynamic;
             time = Math.round(Math.random() * 5 + 5);
             t = setInterval(lunbo, time * 1000);
         }
+
+        //滚动条事件
+        $(window).scroll(function () {
+
+            //滚动条事件
+            if ((jQuery(window).scrollTop() > (jQuery('#form').offset().top + jQuery('#form').outerHeight())) ||
+                ((jQuery(window).scrollTop() + jQuery(window).height()) < jQuery('#form').offset().top)) {
+                $('.scorll').slideDown(1000,function () {
+                    $(".main-footer").css({'padding-bottom':'50px'});
+                });
+            } else {
+                $('.scorll').slideUp(1000,function () {
+                    $(".main-footer").css({'padding-bottom':'0'});
+                });
+            }
+        });
     })
 
 </script>

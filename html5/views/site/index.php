@@ -1,11 +1,8 @@
 <?php
 
-$this->title = '优瑞提供技术支持页面';
+$this->title = '优瑞提供技术页';
 ?>
 
-<style>
-
-</style>
 
 <div class="flex-center position-ref full-height">
     <div class="content">

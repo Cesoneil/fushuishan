@@ -62,8 +62,7 @@ class RegisterUser extends BaseModel
 
             ['mobile', 'match', 'pattern' => RegularHelper::mobile(), 'message' => '请输入正确的手机号码'],
             ['name', 'match', 'pattern' => RegularHelper::isAllChinese(), 'message' => '请输入正确的姓名'],
-            ['address', 'match', 'pattern' => RegularHelper::isAllChinese(), 'message' => '请输入正确的地址'],
-            [['merchant_id','auto_mobile', 'register_form_id', 'mobile', 'province_id', 'city_id', 'area_id', 'created_at', 'updated_at'], 'integer'],
+            [['merchant_id', 'register_form_id', 'mobile', 'province_id', 'city_id', 'area_id', 'created_at', 'updated_at'], 'integer'],
             [['name', 'address', 'source'], 'string'],
             [['name'], 'string', 'max' => 20],
             [['name','mobile','province_id','city_id','area_id','address'],'required'],
@@ -86,12 +85,14 @@ class RegisterUser extends BaseModel
             'area_id' => '区',
             'address' => '地址',
             'source' => '来源',
-            'auto_mobile' => '自动输入历史手机号',
             'created_at' => '创建时间',
             'updated_at' => '修改时间',
         ];
     }
 
+    /**
+     * @return array
+     */
     public static function DefaultValues()
     {
 

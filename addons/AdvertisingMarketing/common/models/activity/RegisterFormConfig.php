@@ -82,5 +82,4 @@ class RegisterFormConfig extends \common\models\base\BaseModel
         ];
     }
 
-
 }
