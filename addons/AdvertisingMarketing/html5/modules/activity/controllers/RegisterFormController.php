@@ -41,26 +41,30 @@ class RegisterFormController extends BaseController
         //获取活动配置信息
         $request = Yii::$app->request;
         $register_form_id = $request->get('register_config_id', '');
-        $source = $request->get('source', '')?$request->get('source', ''): ToolsHelper::getBrowser();//获取浏览器agent的值
+        $source = $request->get('source', '') ? $request->get('source', '') : ToolsHelper::getBrowser();//获取浏览器agent的值
         $register_config = RegisterFormConfig::find()->where(['id' => $register_form_id, 'status' => StatusEnum::ENABLED])->one();
         //表单内容
         $model = new RegisterForm();
         if ($register_config) {
             $cache = Yii::$app->session->get('users');
-            $ip = ToolsHelper::ip();
             if (!empty($cache)) {
                 $model = $model->getRegisterUserInfo($cache['id']);
                 $model->name = StringHelper::hideStr($model->name, 1, 1);
                 $model->mobile = StringHelper::hideStr($model->mobile, 3);
             } else {
-                $ips = Yii::$app->cache->get('visit_users_ip');
-                print_r($ips);
-                if (empty($ips) || !isset($ips[$register_form_id]) || !in_array($ip, $ips[$register_form_id])) {
-                    $register_config->click_number = $register_config->click_number+1;
-                    if ($register_config->save()) {                   //增加有效访问量
-                        isset($ips[$register_form_id]) ? array_push($ips[$register_form_id], $ip) : $ips[$register_form_id][] = $ip;//把用户ip放入缓存
-                        Yii::$app->cache->set('visit_users_ip', $ips);//放入缓存中
+                //防止无效访问量
+                $ips = Yii::$app->cache->get('visit_users_cookie');
+                if(isset($_COOKIE[$request->csrfParam])){
+                    preg_match_all('/:\"[\w\-]+\"/',$_COOKIE[Yii::$app->request->csrfParam],$array);//可以获取到浏览器的唯一值到
+                    $ip=substr($array[0][1],2,-1);
+                    if(!isset($ips[$register_form_id]) || !in_array($ip,$ips[$register_form_id])){
+                        $ips[$register_form_id][]= $ip;
+                        Yii::$app->cache->set('visit_users_cookie', $ips);//放入缓存中
                     }
+                }
+                if (empty($ips) || !isset($ips[$register_form_id]) || !isset($_COOKIE[$request->csrfParam])) {   //没有缓存的情况下;
+                    $register_config->click_number = $register_config->click_number + 1;
+                    $register_config->save();                //增加有效访问量
                 }
             }
         }
