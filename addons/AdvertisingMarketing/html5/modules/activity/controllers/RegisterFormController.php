@@ -54,7 +54,7 @@ class RegisterFormController extends BaseController
                 $model->mobile = StringHelper::hideStr($model->mobile, 3);
             } else {
                 $ips = Yii::$app->cache->get('visit_users_ip');
-                p($ips);
+                print_r($ips);
                 if (empty($ips) || !isset($ips[$register_form_id]) || !in_array($ip, $ips[$register_form_id])) {
                     $register_config->click_number = $register_config->click_number+1;
                     if ($register_config->save()) {                   //增加有效访问量
