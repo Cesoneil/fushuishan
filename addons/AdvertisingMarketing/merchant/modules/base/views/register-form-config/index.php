@@ -107,7 +107,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
                                 'copy' => function ($url, $model, $key) {
                                     return BaseHtml::a('点击复制链接', '#',
                                         ['class' => 'btn btn-white btn-sm copy',
-                                            'data-url' => '/html5/advertising-marketing/activity/register-form' . '?register_config_id=' . $model->id ,
+                                            'data-url' => '/html5/advertising-marketing/activity/register-form' . '?register_config_id=' . $model->id .'&source=',
                                             //这里需要有效性访问拦截，防止恶意攻击点击访问
                                             //'onclick' => 'copy(this,'. $model->id .','.$model->merchant_id.')'
                                         ]);
