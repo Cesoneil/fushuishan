@@ -39,7 +39,7 @@ class RegisterFormController extends BaseController
         //获取活动配置信息
         $request = Yii::$app->request;
         $register_form_id = $request->get('register_config_id', '');
-        $source = $request->get('source', 2);
+        $source = $request->get('source') ?? 2; //默认为UC浏览器
         $register_config = RegisterFormConfig::find()->where(['id' => $register_form_id,'status'=>StatusEnum::ENABLED])->one();
         $register_config->header_img = explode(',', $register_config->header_img);
         $register_config->footer_img = explode(',', $register_config->footer_img);
@@ -80,7 +80,7 @@ class RegisterFormController extends BaseController
 
         //表单内容
         $model = new RegisterForm();
-        $cache = Yii::$app->cache->get('users');
+        $cache = Yii::$app->session->get('users');
         if (!empty($cache)) {
             $model = $model->getRegisterUserInfo($cache['id']);
             $model->name = StringHelper::hideStr($model->name, 1, 1);
@@ -109,8 +109,7 @@ class RegisterFormController extends BaseController
         if ($model->load($request->post()) && $model->validate()) {
             $result = $model->registerSave($request);
             if ($result) {
-                Yii::$app->cache->set('users', ['id' => $result]);
-                Yii::$app->getSession()->setFlash('success', '下单成功');
+                Yii::$app->session->set('users', ['id' => $result]);
                 return $this->redirect(['success']);
             } else {
                 throw new NotFoundHttpException($this->getError($model));
