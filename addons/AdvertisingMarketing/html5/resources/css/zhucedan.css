@@ -228,10 +228,9 @@ label {
 }
 
 .register-modal {
-    margin-top: 60px;
+    margin-top:50px;
 }
-
-.register-modal>.modal-body {
+.agree-body{
     height: 200px;
     overflow: auto
 }

@@ -94,7 +94,7 @@ $dynamic = $register_config->header_dynamic;
                             class="sr-only">关闭</span></button>
                 <h5 class="modal-title">《个人信息授权与保护声明》</h5>
             </div>
-            <div class="modal-body">
+            <div class="modal-body agree-body">
                 <?=  $register_config->agreement ?>
             </div>
             <div class="modal-footer">
